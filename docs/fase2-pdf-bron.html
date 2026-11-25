@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Bij Elkaar - Fase 2: het gezinshuisportaal</title>
+<style>
+@font-face { font-family: 'InterPDF'; font-style: normal; font-weight: 400; src: url('node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'InterPDF'; font-style: normal; font-weight: 500; src: url('node_modules/@fontsource/inter/files/inter-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'InterPDF'; font-style: normal; font-weight: 600; src: url('node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'InterPDF'; font-style: normal; font-weight: 700; src: url('node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'InterPDF'; font-style: normal; font-weight: 800; src: url('node_modules/@fontsource/inter/files/inter-latin-800-normal.woff2') format('woff2'); }
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+html, body { margin: 0; padding: 0; }
+body { font-family: 'InterPDF', 'Inter', sans-serif; font-size: 9pt; line-height: 1.42; color: #16202C; }
+h1, h2, h3, p { margin: 0; }
+.page { position: relative; width: 210mm; height: 297mm; overflow: hidden; background: #F4F8FD; break-after: page; }
+.page:last-child { break-after: auto; }
+.ic { width: 5mm; height: 5mm; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* kop */
+.hero { position: relative; padding: 11mm 14mm 0; background:
+  radial-gradient(120mm 60mm at 88% -8%, rgba(255,255,255,.85), rgba(255,255,255,0) 62%),
+  radial-gradient(100mm 50mm at 2% 104%, rgba(195,210,205,.8), rgba(195,210,205,0) 68%),
+  linear-gradient(120deg, #B4D3F6 0%, #CDE2FA 46%, #E4F0FD 100%); }
+.hero.big { height: 88mm; }
+.hero.small { height: 60mm; }
+.hero { overflow: hidden; }
+.hero .wave { position: absolute; left: -1mm; bottom: -0.6mm; width: 212mm; height: 20.6mm; display: block; }
+.brandrow { display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 3.5mm; }
+.logo-tile { width: 17mm; height: 17mm; border-radius: 4.2mm; background: #fff; display: grid; place-items: center; box-shadow: 0 1mm 4mm rgba(28,46,80,.14); }
+.logo-tile img { width: 14.4mm; height: 14.4mm; display: block; }
+.bname { font-size: 11.5pt; font-weight: 800; letter-spacing: -.01em; line-height: 1.2; }
+.bsub { font-size: 8.4pt; color: #3A4A60; }
+.phase { display: inline-block; padding: 1.1mm 3.2mm; border-radius: 10mm; background: #303744; color: #fff; font-size: 7.8pt; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.hero h1 { font-weight: 800; letter-spacing: -.028em; line-height: 1.08; color: #16202C; }
+.hero.big .kick { margin-top: 9mm; }
+.hero.big h1 { margin-top: 3mm; font-size: 30pt; }
+.hero.small h1 { margin-top: 7mm; font-size: 22pt; }
+.lead { margin-top: 2.6mm; font-size: 11.5pt; color: #33435A; }
+.hero.small .lead { font-size: 10.5pt; margin-top: 2mm; }
+
+/* inhoud */
+.body { padding: 0 14mm; }
+.sec { display: flex; align-items: baseline; gap: 3mm; margin: 6mm 0 3.4mm; }
+.sec.first { margin-top: 1mm; }
+.sec h2 { font-size: 13.5pt; font-weight: 800; letter-spacing: -.015em; }
+.sec p { color: #55647A; font-size: 9pt; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3.4mm; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3.4mm; }
+.grid4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 3.4mm; }
+.card { background: #fff; border: .25mm solid #E1E9F3; border-radius: 3.6mm; box-shadow: 0 .5mm 2.2mm rgba(28,46,80,.06); }
+.feat { display: flex; gap: 3.2mm; padding: 3.6mm 4mm; }
+.feat.stack { flex-direction: column; gap: 2.4mm; padding: 4mm; }
+.fico { flex: none; width: 9.6mm; height: 9.6mm; border-radius: 2.9mm; background: #DCE9FB; color: #1B4FA8; display: grid; place-items: center; }
+.fico.navy { background: #303744; color: #fff; }
+.fico.sage { background: #D5E2DD; color: #2B4A41; }
+.fico.amber { background: #FCE9C9; color: #8A4B00; }
+.feat h3 { font-size: 10.2pt; font-weight: 700; letter-spacing: -.005em; margin-bottom: .7mm; }
+.feat p { font-size: 8.7pt; color: #3A4658; }
+
+/* schermvoorbeeld */
+.shot { padding: 0; overflow: hidden; }
+.shot-h { display: flex; align-items: center; justify-content: space-between; padding: 3.4mm 4.4mm 2.6mm; }
+.shot-h h3 { font-size: 10.2pt; font-weight: 700; }
+.tag { display: inline-flex; align-items: center; height: 5.2mm; padding: 0 2.4mm; border-radius: 3mm; background: #EDF2F8; color: #4A5A70; font-size: 7.2pt; font-weight: 700; white-space: nowrap; }
+.trow { display: grid; grid-template-columns: 1.7fr 1.2fr 1.25fr 1fr 1.1fr; align-items: center; gap: 3mm; padding: 2.3mm 4.4mm; border-top: .25mm solid #EDF2F8; font-size: 8.4pt; }
+.trow.head { border-top: 0; padding-top: 0; padding-bottom: 1.8mm; font-size: 6.6pt; font-weight: 700; color: #55647A; text-transform: uppercase; letter-spacing: .06em; }
+.who { display: flex; align-items: center; gap: 2.6mm; }
+.hb { flex: none; width: 7.6mm; height: 7.6mm; border-radius: 2.3mm; background: #DCE9FB; color: #1B4A9A; display: grid; place-items: center; font-size: 6.8pt; font-weight: 800; letter-spacing: .02em; }
+.av { flex: none; width: 7.6mm; height: 7.6mm; border-radius: 50%; background: #C3D2CD; color: #24403A; display: grid; place-items: center; font-size: 6.8pt; font-weight: 800; }
+.nm { font-weight: 700; line-height: 1.25; }
+.sm { font-size: 7.4pt; color: #55647A; line-height: 1.25; }
+.dots { display: inline-flex; gap: 1mm; margin-right: 1.6mm; vertical-align: middle; }
+.dt { width: 2.1mm; height: 2.1mm; border-radius: 50%; border: .3mm solid #A9BDD6; }
+.dt.on { background: #2166D6; border-color: #2166D6; }
+.chip { display: inline-flex; align-items: center; gap: 1.2mm; height: 5.2mm; padding: 0 2.3mm; border-radius: 3mm; font-size: 7.2pt; font-weight: 700; white-space: nowrap; }
+.chip::before { content: ""; width: 1.3mm; height: 1.3mm; border-radius: 50%; background: currentColor; }
+.c-ok { background: #DCEBFB; color: #174A94; }
+.c-warn { background: #FDEBCB; color: #7A4100; }
+.c-bad { background: #A4262C; color: #fff; }
+
+/* processen */
+.proc { display: grid; grid-template-columns: 50mm 1fr; align-items: center; gap: 5mm; padding: 4.4mm 5mm; }
+.proc + .proc { margin-top: 3.4mm; }
+.proc h3 { font-size: 11pt; font-weight: 800; letter-spacing: -.01em; margin-bottom: 1mm; }
+.proc p { font-size: 8.7pt; color: #3A4658; }
+.steps { display: grid; list-style: none; margin: 0; padding: 0; }
+.steps.n4 { grid-template-columns: repeat(4, 1fr); }
+.steps.n6 { grid-template-columns: repeat(6, 1fr); }
+.stp { display: flex; flex-direction: column; align-items: center; gap: 1.7mm; text-align: center; }
+.sline { display: flex; align-items: center; width: 100%; }
+.sl, .sr { flex: 1; height: .5mm; background: #9DBDEB; }
+.stp:first-child .sl, .stp:last-child .sr { visibility: hidden; }
+.sdot { flex: none; width: 7mm; height: 7mm; border-radius: 50%; background: #2166D6; color: #fff; display: grid; place-items: center; font-size: 8pt; font-weight: 700; }
+.slab { padding: 0 1mm; font-size: 8pt; font-weight: 600; line-height: 1.25; color: #16202C; }
+.timer { display: flex; align-items: center; gap: 3mm; margin-top: 3mm; padding: 2.4mm 3mm; border-radius: 2.8mm; background: #F4F8FD; border: .25mm solid #E1E9F3; }
+.timer svg { flex: none; width: 10mm; height: 10mm; }
+
+/* rollen */
+.role { padding: 4mm; display: flex; flex-direction: column; gap: 2.2mm; }
+.role h3 { font-size: 10.6pt; font-weight: 800; }
+.role .whofor { font-size: 8.6pt; font-weight: 700; color: #16202C; min-height: 2.84em; }
+.role p { font-size: 8.6pt; color: #3A4658; }
+.split { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 3.4mm; margin-top: 3.4mm; }
+.vrow { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, .5fr) minmax(0, 1.3fr) minmax(0, 1.3fr); align-items: center; gap: 2mm; padding: 2.1mm 4.4mm; border-top: .25mm solid #EDF2F8; font-size: 8.3pt; }
+.vrow.head { border-top: 0; padding-top: 0; padding-bottom: 1.8mm; font-size: 6.6pt; font-weight: 700; color: #55647A; text-transform: uppercase; letter-spacing: .06em; }
+.tg { display: inline-flex; align-items: center; gap: 1.6mm; font-size: 7.6pt; font-weight: 600; color: #4A5A70; }
+.trk { position: relative; width: 7.4mm; height: 4.2mm; border-radius: 2.1mm; background: #7C8DA3; }
+.trk::after { content: ""; position: absolute; top: .6mm; left: .6mm; width: 3mm; height: 3mm; border-radius: 50%; background: #fff; }
+.tg.on { color: #16202C; }
+.tg.on .trk { background: #2166D6; }
+.tg.on .trk::after { left: 3.8mm; }
+.side { display: flex; flex-direction: column; gap: 3.4mm; }
+.know { display: flex; gap: 2.8mm; padding: 3.6mm 4mm; align-items: flex-start; }
+.know .ck { flex: none; width: 6.4mm; height: 6.4mm; border-radius: 50%; background: #D5E2DD; color: #2B4A41; display: grid; place-items: center; }
+.know .ck svg { width: 3.8mm; height: 3.8mm; }
+.know p { font-size: 8.8pt; color: #16202C; font-weight: 500; }
+.later { padding: 3.4mm; border-radius: 3.6mm; background: #E9EFEC; border: .25mm solid #CFDBD6; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.6mm; }
+.pill { display: flex; align-items: center; gap: 2.2mm; padding: 2.8mm 3mm; border-radius: 2.8mm; background: #fff; border: .25mm solid #CFDBD6; font-size: 8.5pt; font-weight: 600; line-height: 1.3; color: #24403A; }
+.pill svg { flex: none; width: 4.4mm; height: 4.4mm; color: #5A7A70; }
+
+
+.wp { padding: 4mm 4.4mm; }
+.wp-h { display: flex; align-items: center; gap: 2.8mm; margin-bottom: 2.2mm; }
+.wp-n { flex: none; width: 7.4mm; height: 7.4mm; border-radius: 2.2mm; background: #303744; color: #fff; display: grid; place-items: center; font-size: 9pt; font-weight: 800; }
+.wp-h h3 { font-size: 10.4pt; font-weight: 800; letter-spacing: -.01em; line-height: 1.2; }
+.wp ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 1.1mm; }
+.wp li { position: relative; padding-left: 4mm; font-size: 8.5pt; color: #2A3646; line-height: 1.35; }
+.wp li::before { content: ""; position: absolute; left: .6mm; top: 1.75mm; width: 1.5mm; height: 1.5mm; border-radius: 50%; background: #2166D6; }
+.wp.wide ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 6mm; row-gap: 1.1mm; }
+.f3 { padding: 4mm 4.4mm; background: #E9EFEC; border: .25mm solid #CFDBD6; border-radius: 3.6mm; }
+.f3 .wp-n { background: #5A7A70; }
+.f3 .pills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.4mm; margin-top: 2.6mm; }
+.f3 .pill { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 9mm; padding: 1.8mm 2mm; border-radius: 2.6mm; background: #fff; border: .25mm solid #CFDBD6; font-size: 8.3pt; font-weight: 600; color: #24403A; line-height: 1.25; }
+.del { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3.4mm; }
+.del .card { padding: 4mm; display: flex; flex-direction: column; gap: 2mm; }
+.del h3 { font-size: 10pt; font-weight: 800; }
+.del p { font-size: 8.5pt; color: #3A4658; }
+
+/* voet */
+.bottom { position: absolute; left: 0; right: 0; bottom: 0; height: 17mm; }
+.bottom svg { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; display: block; }
+.foot { position: absolute; left: 14mm; right: 14mm; bottom: 4.6mm; display: flex; justify-content: space-between; font-size: 7.4pt; color: #33435A; }
+</style>
+</head>
+<body>
+
+<!-- pagina 1 -->
+<section class="page">
+<header class="hero big">
+<svg class="wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 Q360 10 720 70 T1440 70 V160 H0 Z" fill="rgba(255,255,255,.32)"></path><path d="M0 96 Q180 62 360 96 T720 96 T1080 96 T1440 96 V160 H0 Z" fill="rgba(255,255,255,.5)"></path><path d="M0 124 Q360 92 720 124 T1440 124 V160 H0 Z" fill="#F4F8FD"></path></svg>
+<div class="brandrow">
+<div class="brand"><div class="logo-tile"><img src="logo.png" alt="Logo van Bij Elkaar"></div><div><div class="bname">Bij Elkaar</div><div class="bsub">Gezinshuisportaal</div></div></div>
+</div>
+<div class="kick"><span class="phase">Fase 2</span></div>
+<h1>Het gezinshuisportaal</h1>
+<p class="lead">Wat Bij Elkaar en de gezinshuizen er straks mee kunnen.</p>
+</header>
+<div class="body">
+<div class="sec first"><h2>Voor Bij Elkaar</h2><p>Bedienen en aansturen vanaf één plek.</p></div>
+<div class="grid2">
+<div class="card feat"><div class="fico navy"><svg class="ic" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"></path></svg></div><div><h3>Alle huizen in één overzicht</h3><p>Per huis de bezetting, de VOG-status, het dossier en het laatste huisbezoek. Wat aandacht vraagt, staat bovenaan.</p></div></div>
+<div class="card feat"><div class="fico amber"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.2c0 4.3-2.8 7.6-7 9.3-4.2-1.7-7-5-7-9.3V6z"></path><path d="m9 12 2.2 2.2L15.2 10"></path></svg></div><div><h3>VOG's bewaken</h3><p>Elke VOG heeft een verloopdatum en een timer. Het huis en Bij Elkaar krijgen op tijd een herinnering.</p></div></div>
+<div class="card feat"><div class="fico"><svg class="ic" viewBox="0 0 24 24"><path d="M7.5 3.5H14l4.5 4.5v11.5a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z"></path><path d="M14 3.5V8h4.5"></path></svg></div><div><h3>Dossier per huis</h3><p>Overeenkomsten en verplichte stukken per huis, met status. Je ziet direct wat ontbreekt.</p></div></div>
+<div class="card feat"><div class="fico sage"><svg class="ic" viewBox="0 0 24 24"><path d="M5 6.5h14a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7.5a1 1 0 0 1 1-1z"></path><path d="M8 4v4M16 4v4M4 10.5h16"></path><path d="m9.5 15 1.8 1.8 3.4-3.4"></path></svg></div><div><h3>Toezicht vastleggen</h3><p>Huisbezoek, jaarevaluatie en gezinshuisoverleg per huis vastgelegd en terug te vinden.</p></div></div>
+<div class="card feat"><div class="fico"><svg class="ic" viewBox="0 0 24 24"><path d="M8 5.5H6.5a1 1 0 0 0-1 1V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V6.5a1 1 0 0 0-1-1H16"></path><path d="M9 4h6v3H9z"></path><path d="M9 12h6M9 16h4"></path></svg></div><div><h3>Taken uitzetten</h3><p>Een taak naar één huis of naar alle huizen, met een termijn. Je ziet wat af is en wat openstaat.</p></div></div>
+<div class="card feat"><div class="fico sage"><svg class="ic" viewBox="0 0 24 24"><path d="M4 13.5 6.2 6h11.6L20 13.5V18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"></path><path d="M4 13.5h4.5l1 2.5h5l1-2.5H20"></path></svg></div><div><h3>Aanvragen afhandelen</h3><p>Vragen en aanvragen van huizen komen op één plek binnen, elk met een status.</p></div></div>
+<div class="card feat"><div class="fico navy"><svg class="ic" viewBox="0 0 24 24"><path d="M6 21V4"></path><path d="M6 5h11.5l-2.2 3.5 2.2 3.5H6"></path></svg></div><div><h3>Nieuwe huizen begeleiden</h3><p>Van aanvraag tot start in vaste stappen. Per stap is duidelijk wie aan zet is.</p></div></div>
+<div class="card feat"><div class="fico"><svg class="ic" viewBox="0 0 24 24"><path d="M5 7.5 12 4l7 3.5-7 3.5z"></path><path d="m5 12 7 3.5 7-3.5"></path><path d="m5 16.5 7 3.5 7-3.5"></path></svg></div><div><h3>Nieuws en documenten</h3><p>Nieuws en documenten naar alle huizen of één huis. Huizen sturen zelf stukken terug.</p></div></div>
+</div>
+<div class="sec"><h2>Zo ziet het overzicht eruit</h2></div>
+<div class="card shot">
+<div class="shot-h"><h3>Gezinshuizen</h3><span class="tag">Schermontwerp met fictieve gegevens</span></div>
+<div class="trow head"><div>Gezinshuis</div><div>Bezetting</div><div>VOG</div><div>Dossier</div><div>Huisbezoek</div></div>
+<div class="trow"><div class="who"><div class="hb">DL</div><div><div class="nm">De Linde</div><div class="sm">Regio Noordwest</div></div></div><div><span class="dots"><span class="dt on"></span><span class="dt on"></span><span class="dt on"></span><span class="dt"></span></span>3 van 4</div><div><span class="chip c-bad">Verlopen</span></div><div><span class="chip c-warn">Actie nodig</span></div><div>6 okt 2026</div></div>
+<div class="trow"><div class="who"><div class="hb">HA</div><div><div class="nm">Het Anker</div><div class="sm">Regio Noord</div></div></div><div><span class="dots"><span class="dt on"></span><span class="dt on"></span><span class="dt on"></span><span class="dt on"></span></span>4 van 4</div><div><span class="chip c-ok">Geldig</span></div><div><span class="chip c-ok">Compleet</span></div><div>11 nov 2026</div></div>
+<div class="trow"><div class="who"><div class="hb">NO</div><div><div class="nm">Noorderzon</div><div class="sm">Regio Midden</div></div></div><div><span class="dots"><span class="dt on"></span><span class="dt on"></span><span class="dt"></span></span>2 van 3</div><div><span class="chip c-warn">Verloopt binnenkort</span></div><div><span class="chip c-bad">Onvolledig</span></div><div>6 mei 2026</div></div>
+</div>
+</div>
+<div class="bottom"><svg viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 Q360 10 720 50 T1440 50 V160 H0 Z" fill="rgba(180,211,246,.36)"></path><path d="M0 74 Q180 46 360 74 T720 74 T1080 74 T1440 74 V160 H0 Z" fill="rgba(180,211,246,.55)"></path><path d="M0 96 Q360 70 720 96 T1440 96 V160 H0 Z" fill="#CDE2FA"></path></svg></div>
+<div class="foot"><span>Bij Elkaar · Gezinshuisportaal, fase 2</span><span>1 / 5</span></div>
+</section>
+
+<!-- pagina 2 -->
+<section class="page">
+<header class="hero small">
+<svg class="wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 Q360 10 720 70 T1440 70 V160 H0 Z" fill="rgba(255,255,255,.32)"></path><path d="M0 96 Q180 62 360 96 T720 96 T1080 96 T1440 96 V160 H0 Z" fill="rgba(255,255,255,.5)"></path><path d="M0 124 Q360 92 720 124 T1440 124 V160 H0 Z" fill="#F4F8FD"></path></svg>
+<div class="brandrow">
+<div class="brand"><div class="logo-tile"><img src="logo.png" alt="Logo van Bij Elkaar"></div><div><div class="bname">Bij Elkaar</div><div class="bsub">Gezinshuisportaal</div></div></div>
+<span class="phase">Fase 2</span>
+</div>
+<h1>Voor het gezinshuis</h1>
+<p class="lead">Eén plek voor stukken, taken en informatie.</p>
+</header>
+<div class="body">
+<div class="sec first"><h2>Wat een gezinshuis kan</h2></div>
+<div class="grid3">
+<div class="card feat stack"><div class="fico navy"><svg class="ic" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"></path></svg></div><div><h3>Het eigen huis in beeld</h3><p>Medewerkers, dossier en taken op één plek. Een huis ziet alleen zichzelf.</p></div></div>
+<div class="card feat stack"><div class="fico"><svg class="ic" viewBox="0 0 24 24"><path d="M12 15.5V5"></path><path d="m7.5 9.5 4.5-4.5 4.5 4.5"></path><path d="M5 19h14"></path></svg></div><div><h3>Stukken uitwisselen</h3><p>Het huis uploadt VOG en stukken voor Bij Elkaar, en ziet wat Bij Elkaar klaarzet.</p></div></div>
+<div class="card feat stack"><div class="fico amber"><svg class="ic" viewBox="0 0 24 24"><path d="M6.5 16.5v-5.2a5.5 5.5 0 0 1 11 0v5.2l1.5 2h-14z"></path><path d="M10 21h4"></path></svg></div><div><h3>Op tijd een herinnering</h3><p>Een melding ruim voordat een VOG of ander stuk verloopt.</p></div></div>
+<div class="card feat stack"><div class="fico sage"><svg class="ic" viewBox="0 0 24 24"><path d="M3 6v12.5"></path><path d="M3 14h18v4.5"></path><path d="M21 14v-1.5a3 3 0 0 0-3-3h-7V14"></path><circle cx="7" cy="10.7" r="1.8"></circle></svg></div><div><h3>Vrije plekken bijwerken</h3><p>Het huis houdt zelf bij hoeveel plekken vrij zijn.</p></div></div>
+<div class="card feat stack"><div class="fico"><svg class="ic" viewBox="0 0 24 24"><path d="M8 5.5H6.5a1 1 0 0 0-1 1V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V6.5a1 1 0 0 0-1-1H16"></path><path d="M9 4h6v3H9z"></path><path d="m9 13.5 2 2 4-4"></path></svg></div><div><h3>Taken en aanvragen</h3><p>Taken van Bij Elkaar afronden, en zelf een vraag of aanvraag indienen en volgen.</p></div></div>
+<div class="card feat stack"><div class="fico sage"><svg class="ic" viewBox="0 0 24 24"><path d="M9.5 6.5H18V15"></path><path d="M18 6.5 7 17.5"></path></svg></div><div><h3>Nieuws, documenten en links</h3><p>Nieuws van Bij Elkaar, de gedeelde documenten en snelkoppelingen naar Drive, ONS en Zorgly.</p></div></div>
+</div>
+<div class="sec"><h2>Zo loopt het</h2><p>Drie processen die het portaal ondersteunt.</p></div>
+<div class="card proc">
+<div><h3>VOG op orde</h3><p>Elke drie jaar een nieuwe VOG, zonder Excel-lijst.</p>
+<div class="timer"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" fill="none" stroke="#E3ECF6" stroke-width="6"></circle><circle cx="20" cy="20" r="15" fill="none" stroke="#2166D6" stroke-width="6" stroke-dasharray="35.5 94.3" transform="rotate(-90 20 20)"></circle></svg><div><div class="nm">nog 412 dagen</div><div class="sm">voorbeeld van de timer</div></div></div>
+</div>
+<ol class="steps n4">
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">1</span><span class="sr"></span></div><div class="slab">VOG uploaden</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">2</span><span class="sr"></span></div><div class="slab">Timer loopt</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">3</span><span class="sr"></span></div><div class="slab">Herinnering op tijd</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">4</span><span class="sr"></span></div><div class="slab">Nieuwe VOG erin</div></li>
+</ol>
+</div>
+<div class="card proc">
+<div><h3>Een nieuw gezinshuis</h3><p>Het huis ziet zijn stappen, Bij Elkaar volgt de voortgang.</p></div>
+<ol class="steps n6">
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">1</span><span class="sr"></span></div><div class="slab">Aanvraag</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">2</span><span class="sr"></span></div><div class="slab">Beoordeling</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">3</span><span class="sr"></span></div><div class="slab">Screening</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">4</span><span class="sr"></span></div><div class="slab">Besluit directie</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">5</span><span class="sr"></span></div><div class="slab">Overeenkomst en checklist</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">6</span><span class="sr"></span></div><div class="slab">Start</div></li>
+</ol>
+</div>
+<div class="card proc">
+<div><h3>Toezicht op de huizen</h3><p>Per huis is te zien wat wanneer is gedaan.</p></div>
+<ol class="steps n4">
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">1</span><span class="sr"></span></div><div class="slab">Huisbezoek vastleggen</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">2</span><span class="sr"></span></div><div class="slab">Jaarevaluatie bijhouden</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">3</span><span class="sr"></span></div><div class="slab">Signaal bij achterstand</div></li>
+<li class="stp"><div class="sline"><span class="sl"></span><span class="sdot">4</span><span class="sr"></span></div><div class="slab">Aantoonbaar per huis</div></li>
+</ol>
+</div>
+</div>
+<div class="bottom"><svg viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 Q360 10 720 50 T1440 50 V160 H0 Z" fill="rgba(180,211,246,.36)"></path><path d="M0 74 Q180 46 360 74 T720 74 T1080 74 T1440 74 V160 H0 Z" fill="rgba(180,211,246,.55)"></path><path d="M0 96 Q360 70 720 96 T1440 96 V160 H0 Z" fill="#CDE2FA"></path></svg></div>
+<div class="foot"><span>Bij Elkaar · Gezinshuisportaal, fase 2</span><span>2 / 5</span></div>
+</section>
+
+<!-- pagina 3 -->
+<section class="page">
+<header class="hero small">
+<svg class="wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 Q360 10 720 70 T1440 70 V160 H0 Z" fill="rgba(255,255,255,.32)"></path><path d="M0 96 Q180 62 360 96 T720 96 T1080 96 T1440 96 V160 H0 Z" fill="rgba(255,255,255,.5)"></path><path d="M0 124 Q360 92 720 124 T1440 124 V160 H0 Z" fill="#F4F8FD"></path></svg>
+<div class="brandrow">
+<div class="brand"><div class="logo-tile"><img src="logo.png" alt="Logo van Bij Elkaar"></div><div><div class="bname">Bij Elkaar</div><div class="bsub">Gezinshuisportaal</div></div></div>
+<span class="phase">Fase 2</span>
+</div>
+<h1>Wie ziet wat</h1>
+<p class="lead">Rollen, afscherming en wat waar blijft.</p>
+</header>
+<div class="body">
+<div class="sec first"><h2>Vier rollen</h2></div>
+<div class="grid4">
+<div class="card role"><div class="fico navy"><svg class="ic" viewBox="0 0 24 24"><circle cx="8" cy="15" r="3.5"></circle><path d="M10.5 12.5 19 4"></path><path d="m16 7 2.5 2.5"></path></svg></div><h3>Admin</h3><div class="whofor">Eigenaren van Bij Elkaar</div><p>Zien alles en voeren acties uit.</p></div>
+<div class="card role"><div class="fico"><svg class="ic" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></div><h3>Viewer</h3><div class="whofor">Medewerkers van Bij Elkaar</div><p>Kunnen inzien, niets wijzigen.</p></div>
+<div class="card role"><div class="fico amber"><svg class="ic" viewBox="0 0 24 24"><path d="M4 9.5 12 5l8 4.5"></path><path d="M5 19.5h14"></path><path d="M7 10.5v7M12 10.5v7M17 10.5v7"></path></svg></div><h3>Audit</h3><div class="whofor">Gemeenten</div><p>Houden toezicht op wat is vrijgegeven.</p></div>
+<div class="card role"><div class="fico sage"><svg class="ic" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"></path></svg></div><h3>Gezinshuis</h3><div class="whofor">Het huis zelf</div><p>Ziet alleen de eigen gegevens.</p></div>
+</div>
+<div class="split">
+<div class="card shot">
+<div class="shot-h"><h3>Afschermen per gegeven</h3><span class="tag">Schermontwerp</span></div>
+<div class="vrow head"><div>Gegeven</div><div>Admin</div><div>Viewer</div><div>Audit</div></div>
+<div class="vrow"><div class="nm">Adres en locatie</div><div class="sm">Altijd</div><div><span class="tg on"><span class="trk"></span>Zichtbaar</span></div><div><span class="tg"><span class="trk"></span>Afgeschermd</span></div></div>
+<div class="vrow"><div class="nm">Namen van medewerkers</div><div class="sm">Altijd</div><div><span class="tg on"><span class="trk"></span>Zichtbaar</span></div><div><span class="tg"><span class="trk"></span>Afgeschermd</span></div></div>
+<div class="vrow"><div class="nm">VOG-status</div><div class="sm">Altijd</div><div><span class="tg on"><span class="trk"></span>Zichtbaar</span></div><div><span class="tg on"><span class="trk"></span>Zichtbaar</span></div></div>
+<div class="vrow"><div class="nm">VOG-bestanden</div><div class="sm">Altijd</div><div><span class="tg"><span class="trk"></span>Afgeschermd</span></div><div><span class="tg"><span class="trk"></span>Afgeschermd</span></div></div>
+<div class="vrow"><div class="nm">Aantal kinderen</div><div class="sm">Altijd</div><div><span class="tg on"><span class="trk"></span>Zichtbaar</span></div><div><span class="tg on"><span class="trk"></span>Zichtbaar</span></div></div>
+</div>
+<div class="side">
+<div class="card feat"><div class="fico"><svg class="ic" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3"></path><path d="M6 11h12a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1z"></path></svg></div><div><h3>Zelf instellen</h3><p>Per gegeven bepaalt Bij Elkaar wat een rol ziet. Van een geheime locatie blijven regio en adres afgeschermd.</p></div></div>
+<div class="card feat"><div class="fico sage"><svg class="ic" viewBox="0 0 24 24"><path d="M5 5.5h14M5 10h14M5 14.5h9M5 19h6"></path></svg></div><div><h3>Logboek</h3><p>Vastgelegd wie wat heeft gedaan of ingezien.</p></div></div>
+</div>
+</div>
+<div class="sec"><h2>Goed om te weten</h2></div>
+<div class="grid3">
+<div class="card know"><div class="ck"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div><p>Inloggen gaat met het Bij Elkaar-account van Google.</p></div>
+<div class="card know"><div class="ck"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div><p>Het portaal gaat over de huizen. Gegevens van kinderen blijven in ONS.</p></div>
+<div class="card know"><div class="ck"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></div><p>Bestanden blijven in Google Drive. Het portaal verwijst ernaar.</p></div>
+</div>
+</div>
+<div class="bottom"><svg viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 Q360 10 720 50 T1440 50 V160 H0 Z" fill="rgba(180,211,246,.36)"></path><path d="M0 74 Q180 46 360 74 T720 74 T1080 74 T1440 74 V160 H0 Z" fill="rgba(180,211,246,.55)"></path><path d="M0 96 Q360 70 720 96 T1440 96 V160 H0 Z" fill="#CDE2FA"></path></svg></div>
+<div class="foot"><span>Bij Elkaar · Gezinshuisportaal, fase 2</span><span>3 / 5</span></div>
+</section>
+
+<section class="page">
+<header class="hero small">
+<svg class="wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 Q360 10 720 70 T1440 70 V160 H0 Z" fill="rgba(255,255,255,.32)"></path><path d="M0 96 Q180 62 360 96 T720 96 T1080 96 T1440 96 V160 H0 Z" fill="rgba(255,255,255,.5)"></path><path d="M0 124 Q360 92 720 124 T1440 124 V160 H0 Z" fill="#F4F8FD"></path></svg>
+<div class="brandrow">
+<div class="brand"><div class="logo-tile"><img src="logo.png" alt="Logo van Bij Elkaar"></div><div><div class="bname">Bij Elkaar</div><div class="bsub">Gezinshuisportaal</div></div></div>
+<span class="phase">Fase 2</span>
+</div>
+<h1>Wat valt onder fase 2</h1>
+<p class="lead">Acht onderdelen, allemaal vanuit Bij Elkaar naar de gezinshuizen.</p>
+</header>
+<div class="body">
+<div class="grid2" style="margin-top: 1mm">
+<div class="card wp"><div class="wp-h"><div class="wp-n">1</div><h3>Portaal en toegang</h3></div><ul><li>Inloggen met een Bij Elkaar-account van Google</li><li>Een account per gezinshuis</li><li>Rollen admin, viewer, audit en gezinshuis</li><li>Per gegeven instellen wat een rol ziet</li><li>Logboek van wie wat deed of inzag</li></ul></div>
+<div class="card wp"><div class="wp-h"><div class="wp-n">2</div><h3>Dossier en VOG-bewaking</h3></div><ul><li>Verplichte stukken per huis, met status</li><li>VOG per persoon met vervaldatum en timer</li><li>Herinnering 90 en 30 dagen voor het verlopen</li><li>Overzicht voor de administratie</li></ul></div>
+<div class="card wp"><div class="wp-h"><div class="wp-n">3</div><h3>Documenten in twee richtingen</h3></div><ul><li>Bij Elkaar zet documenten klaar voor alle huizen of één huis</li><li>Het huis uploadt stukken voor Bij Elkaar</li><li>Bestanden blijven in Google Drive</li></ul></div>
+<div class="card wp"><div class="wp-h"><div class="wp-n">4</div><h3>Toezicht</h3></div><ul><li>Huisbezoek, jaarevaluatie en gezinshuisoverleg vastleggen</li><li>Signaal bij achterstand</li><li>Auditrol: gemeenten zien wat is vrijgegeven</li></ul></div>
+<div class="card wp"><div class="wp-h"><div class="wp-n">5</div><h3>Nieuwe huizen</h3></div><ul><li>Van aanvraag tot start in vaste stappen</li><li>Per stap zichtbaar wie aan zet is</li><li>Overeenkomsten en checklist per nieuw huis</li></ul></div>
+<div class="card wp"><div class="wp-h"><div class="wp-n">6</div><h3>Plekken, taken en nieuws</h3></div><ul><li>Het huis houdt zelf de vrije plekken bij</li><li>Taken naar één huis of alle huizen, met termijn</li><li>Aanvragen van huizen, met status</li><li>Nieuws van Bij Elkaar voor de huizen</li></ul></div>
+<div class="card wp"><div class="wp-h"><div class="wp-n">7</div><h3>Koppelingen ONS en Zorgly</h3></div><ul><li>Snelkoppelingen vanuit elk huis</li><li>Inloggen met één account (SSO), inrichten en testen</li><li>Gegevens van kinderen blijven in ONS</li></ul></div>
+<div class="card wp"><div class="wp-h"><div class="wp-n">8</div><h3>Uitrol en beheer</h3></div><ul><li>Videodemo en quick reference</li><li>Begeleiding van de eerste huizen</li><li>Helpdesk en accountmutaties</li><li>Tweewekelijks overleg en kleine fixes</li></ul></div>
+</div>
+</div>
+<div class="bottom"><svg viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 Q360 10 720 50 T1440 50 V160 H0 Z" fill="rgba(180,211,246,.36)"></path><path d="M0 74 Q180 46 360 74 T720 74 T1080 74 T1440 74 V160 H0 Z" fill="rgba(180,211,246,.55)"></path><path d="M0 96 Q360 70 720 96 T1440 96 V160 H0 Z" fill="#CDE2FA"></path></svg></div>
+<div class="foot"><span>Bij Elkaar · Gezinshuisportaal, fase 2</span><span>4 / 5</span></div>
+</section>
+<section class="page">
+<header class="hero small">
+<svg class="wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 Q360 10 720 70 T1440 70 V160 H0 Z" fill="rgba(255,255,255,.32)"></path><path d="M0 96 Q180 62 360 96 T720 96 T1080 96 T1440 96 V160 H0 Z" fill="rgba(255,255,255,.5)"></path><path d="M0 124 Q360 92 720 124 T1440 124 V160 H0 Z" fill="#F4F8FD"></path></svg>
+<div class="brandrow">
+<div class="brand"><div class="logo-tile"><img src="logo.png" alt="Logo van Bij Elkaar"></div><div><div class="bname">Bij Elkaar</div><div class="bsub">Gezinshuisportaal</div></div></div>
+<span class="phase">Fase 2</span>
+</div>
+<h1>Afspraken</h1>
+<p class="lead">Wat Bij Elkaar aanlevert en wat nog open staat.</p>
+</header>
+<div class="body">
+<div class="sec first"><h2>Wat Bij Elkaar aanlevert</h2></div>
+<div class="del">
+<div class="card"><div class="fico"><svg class="ic" viewBox="0 0 24 24"><path d="M5 5.5h14M5 10h14M5 14.5h9M5 19h6"></path></svg></div><h3>Lijst gezinshuizen</h3><p>Per huis naam, contactpersoon en wie er werken.</p></div>
+<div class="card"><div class="fico sage"><svg class="ic" viewBox="0 0 24 24"><path d="M7.5 3.5H14l4.5 4.5v11.5a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z"></path><path d="M14 3.5V8h4.5"></path></svg></div><h3>Stukken en formats</h3><p>Welke stukken verplicht zijn, de checklist voor een nieuw huis en de formats van Team Wonen.</p></div>
+<div class="card"><div class="fico amber"><svg class="ic" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3"></path><path d="M6 11h12a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1z"></path></svg></div><h3>Toegang Nedap en Zorgly</h3><p>Medewerking van beide leveranciers voor inloggen met één account.</p></div>
+</div>
+<div class="sec"><h2>Nog te beslissen</h2></div>
+<div class="grid2">
+<div class="card know"><div class="ck" style="background:#FCE9C9;color:#8A4B00"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 11v5M12 8v.5"></path></svg></div><p>Wie logt er per gezinshuis in: alleen de gezinshuisouders, of ook de medewerkers?</p></div>
+<div class="card know"><div class="ck" style="background:#FCE9C9;color:#8A4B00"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 11v5M12 8v.5"></path></svg></div><p>Welke gemeenten krijgen een auditaccount, en welke huizen ziet elke gemeente?</p></div>
+</div>
+</div>
+<div class="bottom"><svg viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 Q360 10 720 50 T1440 50 V160 H0 Z" fill="rgba(180,211,246,.36)"></path><path d="M0 74 Q180 46 360 74 T720 74 T1080 74 T1440 74 V160 H0 Z" fill="rgba(180,211,246,.55)"></path><path d="M0 96 Q360 70 720 96 T1440 96 V160 H0 Z" fill="#CDE2FA"></path></svg></div>
+<div class="foot"><span>Bij Elkaar · Gezinshuisportaal, fase 2</span><span>5 / 5</span></div>
+</section>
+</body>
+</html>
