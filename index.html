@@ -1,0 +1,835 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gezinshuisportaal Bij Elkaar - schermontwerp</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="prototype/assets/bijelkaar-logo.png">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',sans-serif;font-size:14px;line-height:1.45;color:#16202C;background:#F4F8FD;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+a{color:#2166D6}a:hover{color:#1A54B4}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid #2166D6;outline-offset:2px}
+sc-for,sc-if{display:contents}
+.wrap{width:100%;max-width:1320px;margin:0 auto;padding-left:32px;padding-right:32px}
+.col{display:flex;flex-direction:column}
+.cf{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.act{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+.who{display:flex;align-items:center;gap:12px;min-width:0}
+.ic{flex:none;width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.h1{font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.h2{font-size:17px;font-weight:700;letter-spacing:-.01em}
+.mut{color:#55647A;font-size:12.5px}
+.lbl{font-size:12.5px;font-weight:600;color:#55647A}
+.num{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.1;font-variant-numeric:tabular-nums}
+.strip{position:sticky;top:0;z-index:10;background:#303744;color:#fff}
+.strip-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 24px;padding-top:10px;padding-bottom:10px}
+.ptag{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:12px;background:#F6C76B;color:#3A2A00;font-size:12px;font-weight:800;letter-spacing:.02em}
+.ptxt{font-size:13px;color:#DDE3EC}
+.hero{position:relative;overflow:hidden;background:radial-gradient(900px 380px at 88% -8%,rgba(255,255,255,.85),rgba(255,255,255,0) 62%),radial-gradient(760px 340px at 2% 104%,rgba(195,210,205,.8),rgba(195,210,205,0) 68%),linear-gradient(120deg,#B4D3F6 0%,#CDE2FA 46%,#E4F0FD 100%)}
+.waves{position:absolute;left:0;right:0;bottom:0;height:170px;pointer-events:none}
+.wv{position:absolute;left:0;bottom:0;display:block;width:200%;height:100%}
+.w1{fill:rgba(255,255,255,.32);animation:drift 120s linear infinite}
+.w2{fill:rgba(255,255,255,.5);animation:drift 90s linear infinite reverse}
+.w3{fill:#F4F8FD;animation:drift 64s linear infinite}
+.hero-in{position:relative;z-index:1}
+.topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;margin-top:16px;padding:8px 12px 8px 14px;background:rgba(255,255,255,.95);border:1px solid #fff;border-radius:20px;box-shadow:0 1px 2px rgba(28,46,80,.06),0 14px 34px rgba(28,46,80,.12)}
+.brandbox{display:flex;align-items:center;gap:12px}
+.bname{font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.2}
+.menu{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.navi{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:0;border-radius:12px;background:transparent;font-weight:600;color:#3A4658;cursor:pointer;white-space:nowrap;transition:background .16s,color .16s}
+.navi:hover{background:#EEF4FC;color:#16202C}
+.navi.on,.navi.on:hover{background:#DCE9FB;color:#16202C}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 7px;border-radius:11px;background:#2166D6;color:#fff;font-size:12px;font-weight:700}
+.userchip{display:flex;align-items:center;gap:10px;padding:4px 12px 4px 4px;border-radius:14px;background:#F1F6FC}
+.av{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#C3D2CD;color:#24403A;font-size:12.5px;font-weight:800;letter-spacing:.02em}
+.hb{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#DCE9FB;color:#1B4A9A;font-size:12.5px;font-weight:800;letter-spacing:.02em}
+.fico{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#EDF2F8;color:#4A5A70}
+.hh{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px;padding:36px 4px 140px}
+.hsub{font-size:16px;color:#33435A}
+.hline{color:#33435A}
+.backb{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px 0 8px;margin-left:-8px;border:0;border-radius:12px;background:transparent;font-weight:600;color:#27405F;cursor:pointer;transition:background .16s}
+.backb:hover{background:rgba(255,255,255,.55)}
+.main{position:relative;z-index:2;margin-top:-76px;padding-bottom:56px}
+.screen{display:flex;flex-direction:column;gap:20px;animation:rise .35s ease-out backwards}
+.in{animation:rise .4s ease-out backwards}
+.card{background:#fff;border:1px solid #E1E9F3;border-radius:18px;box-shadow:0 1px 2px rgba(28,46,80,.04),0 10px 28px rgba(28,46,80,.07);overflow:hidden}
+.pad{padding:20px 22px}
+.ch{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;padding:18px 22px}
+.kpi{display:flex;align-items:flex-start;gap:14px;padding:20px 22px;transition:transform .18s,box-shadow .18s}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(28,46,80,.05),0 16px 36px rgba(28,46,80,.11)}
+.kico{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:#DCE9FB;color:#1B4FA8}
+.kico .ic{width:22px;height:22px}
+.kico.navy{background:#303744;color:#fff}
+.kico.sage{background:#D5E2DD;color:#2B4A41}
+.kico.amber{background:#FCE9C9;color:#8A4B00}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;min-width:44px;padding:0 16px;border-radius:12px;border:1px solid #D3DEEC;background:#fff;color:#16202C;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .16s,border-color .16s,transform .16s,box-shadow .16s}
+.btn:hover{border-color:#9DBDEB;background:#F3F8FE}
+.btn:active{transform:translateY(1px)}
+.btn.pri{background:#2166D6;border-color:#2166D6;color:#fff;box-shadow:0 6px 16px rgba(33,102,214,.28)}
+.btn.pri:hover{background:#1A54B4;border-color:#1A54B4}
+.btn.ghost{border-color:transparent;background:transparent;color:#1B55B8}
+.btn.ghost:hover{background:#E6EFFC}
+.seg{min-height:44px;padding:0 14px;border-radius:12px;border:1px solid #D3DEEC;background:#fff;font-weight:600;color:#3A4658;cursor:pointer;white-space:nowrap;transition:background .16s,border-color .16s,color .16s}
+.seg:hover{border-color:#9DBDEB;background:#F3F8FE}
+.seg.on,.seg.on:hover{background:#303744;border-color:#303744;color:#fff}
+.tabs{align-self:flex-start;max-width:100%;display:flex;gap:4px;overflow-x:auto;padding:6px;background:#fff;border:1px solid #E1E9F3;border-radius:16px;box-shadow:0 1px 2px rgba(28,46,80,.04)}
+.tab{min-height:44px;padding:0 16px;border:0;border-radius:11px;background:transparent;font-weight:600;color:#4A5A70;cursor:pointer;white-space:nowrap;transition:background .16s,color .16s}
+.tab:hover{background:#EEF4FC;color:#16202C}
+.tab.on,.tab.on:hover{background:#303744;color:#fff}
+.chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:13px;font-size:12px;font-weight:700;white-space:nowrap}
+.chip.st::before{content:"";flex:none;width:6px;height:6px;border-radius:3px;background:currentColor}
+.c-ok{background:#DCEBFB;color:#174A94}
+.c-warn{background:#FDEBCB;color:#7A4100}
+.c-bad{background:#A4262C;color:#fff}
+.c-mute{background:#EDF2F8;color:#4A5A70}
+.c-sage{background:#C3D2CD;color:#24403A}
+.c-white{background:rgba(255,255,255,.82);color:#27405F}
+.row{display:grid;align-items:center;gap:16px;padding:14px 22px;border-top:1px solid #EDF2F8}
+.row.head{border-top:0;padding-top:2px;padding-bottom:10px;font-size:11.5px;font-weight:700;color:#55647A;text-transform:uppercase;letter-spacing:.06em}
+.row.hov{transition:background .16s}
+.row.hov:hover{background:#F5F9FE}
+.g1{grid-template-columns:minmax(0,1fr)}
+.g2{grid-template-columns:minmax(0,1fr) auto}
+.g3{grid-template-columns:minmax(0,1fr) auto auto}
+.g-h{grid-template-columns:minmax(210px,1.9fr) minmax(150px,1.1fr) minmax(160px,1fr) minmax(120px,.9fr) minmax(130px,1fr) 104px}
+.g-vog{grid-template-columns:minmax(220px,1.5fr) minmax(160px,1fr) minmax(230px,1.3fr) minmax(250px,auto)}
+.g-req{grid-template-columns:minmax(190px,1fr) minmax(240px,2fr) minmax(110px,.7fr) minmax(130px,.8fr) minmax(250px,auto)}
+.g-log{grid-template-columns:minmax(120px,.7fr) minmax(200px,1.1fr) minmax(280px,2.4fr) minmax(130px,.9fr)}
+.g-user{grid-template-columns:minmax(220px,1.3fr) minmax(210px,1.4fr) minmax(110px,.7fr) minmax(160px,1fr)}
+.g-vis{grid-template-columns:minmax(240px,2fr) minmax(90px,.5fr) minmax(170px,.9fr) minmax(170px,.9fr)}
+.dots{display:flex;gap:5px}
+.dt{display:block;width:10px;height:10px;border-radius:5px;border:1.5px solid #A9BDD6}
+.dt.on{background:#2166D6;border-color:#2166D6}
+.ring{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:50%;animation:ringin .7s cubic-bezier(.2,.7,.2,1) backwards}
+.ring>span{display:block;width:34px;height:34px;border-radius:50%;background:#fff;transition:background .16s}
+.row.hov:hover .ring>span{background:#F5F9FE}
+.tdot{display:block;width:10px;height:10px;border-radius:5px;background:#2166D6;box-shadow:0 0 0 4px #DCE9FB}
+.steps{list-style:none;margin:0;padding:0;min-width:680px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.stp{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.sline{display:flex;align-items:center;width:100%}
+.sl,.sr{flex:1;height:2px;background:#DCE6F2}
+.sdot{flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:16px;border:2px solid #C8D6E8;background:#fff;color:#55647A;font-size:12.5px;font-weight:700}
+.slab{padding:0 6px;font-size:12.5px;color:#55647A}
+.stp.first .sl,.stp.last .sr{visibility:hidden}
+.stp.done .sdot{background:#2166D6;border-color:#2166D6;color:#fff}
+.stp.done .sl,.stp.done .sr,.stp.cur .sl{background:#2166D6}
+.stp.cur .sdot{border-color:#2166D6;color:#1B55B8;animation:pulse 1.9s ease-out infinite}
+.stp.done .slab,.stp.cur .slab{color:#16202C;font-weight:600}
+.inp{min-height:44px;width:100%;padding:0 12px;border:1px solid #D3DEEC;border-radius:12px;background:#fff;font-weight:400;transition:border-color .16s}
+.inp:hover{border-color:#9DBDEB}
+.srch{position:relative;display:block}
+.srch .ic{position:absolute;left:13px;top:13px;color:#55647A;pointer-events:none}
+.srch .inp{width:240px;padding-left:38px;background:#F6F9FD}
+.tg{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0;border:0;background:transparent;font-weight:600;color:#4A5A70;cursor:pointer}
+.tg .trk{position:relative;flex:none;display:block;width:38px;height:22px;border-radius:11px;background:#7C8DA3}
+.tg .trk::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:8px;background:#fff}
+.tg.on{color:#16202C}
+.tg.on .trk{background:#2166D6}
+.tg.on .trk::after{transform:translateX(16px)}
+.note{padding:12px 16px;border:1px solid #C6DBF6;background:#EAF2FD;border-radius:12px}
+.foot{position:relative;margin-top:auto;height:150px;overflow:hidden}
+.foot .w1{fill:rgba(180,211,246,.36)}
+.foot .w2{fill:rgba(180,211,246,.55)}
+.foot .w3{fill:#CDE2FA}
+.foot-txt{position:absolute;left:0;right:0;bottom:16px;padding:0 16px;text-align:center;font-size:12.5px;color:#33435A}
+.toastw{position:fixed;left:0;right:0;top:6px;z-index:30;display:flex;justify-content:center;padding:0 16px;pointer-events:none}
+.toast{display:flex;align-items:center;gap:10px;max-width:600px;min-height:44px;padding:8px 16px;border-radius:12px;background:#fff;color:#16202C;font-weight:600;box-shadow:0 10px 30px rgba(10,20,40,.35);animation:drop .25s ease-out both}
+.toast .ic{color:#8A4B00}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes ringin{from{opacity:0;transform:rotate(-120deg) scale(.7)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(33,102,214,.38)}70%{box-shadow:0 0 0 10px rgba(33,102,214,0)}100%{box-shadow:0 0 0 0 rgba(33,102,214,0)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+</head>
+<body>
+<div id="app"></div>
+<template id="tpl">
+
+<div style="min-height: 100vh; display: flex; flex-direction: column; background: linear-gradient(180deg, #F4F8FD 0%, #ECF3FC 100%)">
+<div class="strip">
+<div class="wrap strip-in">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px"><span class="ptag">Schermontwerp</span><span class="ptxt">Dit is een ontwerp en nog geen werkend systeem. Je kunt alleen door de pagina's klikken.</span></div>
+<span class="ptxt">Alle gegevens zijn fictief</span>
+</div>
+</div>
+
+<div class="hero">
+<div class="waves" aria-hidden="true">
+<svg class="wv w1" viewBox="0 0 2880 160" preserveAspectRatio="none"><path d="M0 70 Q360 10 720 70 T1440 70 T2160 70 T2880 70 V160 H0 Z"></path></svg>
+<svg class="wv w2" viewBox="0 0 2880 160" preserveAspectRatio="none"><path d="M0 96 Q180 62 360 96 T720 96 T1080 96 T1440 96 T1800 96 T2160 96 T2520 96 T2880 96 V160 H0 Z"></path></svg>
+<svg class="wv w3" viewBox="0 0 2880 160" preserveAspectRatio="none"><path d="M0 124 Q360 92 720 124 T1440 124 T2160 124 T2880 124 V160 H0 Z"></path></svg>
+</div>
+<div class="wrap hero-in">
+<div class="topbar">
+<div class="brandbox">
+<img src="prototype/assets/bijelkaar-logo.png" alt="Logo van Bij Elkaar" style="width: 56px; height: 56px; object-fit: contain">
+<div class="col" style="gap: 1px"><div class="bname">Bij Elkaar</div><div class="mut">Gezinshuisportaal</div></div>
+</div>
+<nav aria-label="Hoofdmenu" class="menu">
+<sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
+<button type="button" class="{{ n.cls }}" onClick="{{ n.go }}"><span>{{ n.label }}</span><sc-if value="{{ n.hasBadge }}" hint-placeholder-val="{{ false }}"><span class="badge">{{ n.badge }}</span></sc-if></button>
+</sc-for>
+</nav>
+<div class="userchip"><div class="av" aria-hidden="true">ES</div><div class="col" style="gap: 0"><div style="font-weight: 700; line-height: 1.25">Eva Smit</div><div class="mut">Admin, eigenaar</div></div></div>
+</div>
+<div class="hh">
+<div class="col" style="gap: 10px; min-width: 0">
+<sc-if value="{{ hero.back }}" hint-placeholder-val="{{ false }}"><div><button type="button" class="backb" onClick="{{ hero.goBack }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg><span>Overzicht</span></button></div></sc-if>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px"><h1 class="h1">{{ hero.title }}</h1><sc-if value="{{ hero.isHouse }}" hint-placeholder-val="{{ false }}"><span class="chip st c-sage">Aangesloten</span></sc-if><sc-if value="{{ hero.secret }}" hint-placeholder-val="{{ false }}"><span class="chip c-white">Geheime locatie</span></sc-if></div>
+<p class="hsub">{{ hero.sub }}</p>
+<sc-if value="{{ hero.hasLine }}" hint-placeholder-val="{{ false }}"><p class="hline">{{ hero.line }}</p></sc-if>
+</div>
+<sc-if value="{{ hero.hasAction }}" hint-placeholder-val="{{ false }}"><button type="button" class="btn pri" onClick="{{ soon }}">{{ hero.actionLabel }}</button></sc-if>
+</div>
+</div>
+</div>
+
+<main class="wrap main">
+<sc-if value="{{ scr.dash }}" hint-placeholder-val="{{ true }}">
+<section class="screen">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 20px">
+<div class="card kpi in">
+<div class="kico navy" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"></path></svg></div>
+<div class="col" style="gap: 2px; min-width: 0"><div class="lbl">Gezinshuizen</div><div class="num">{{ kpi.huizen }}</div><div class="mut">{{ kpi.huizenHint }}</div></div>
+</div>
+<div class="card kpi in" style="animation-delay: 60ms">
+<div class="kico amber" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.2c0 4.3-2.8 7.6-7 9.3-4.2-1.7-7-5-7-9.3V6z"></path><path d="m9 12 2.2 2.2L15.2 10"></path></svg></div>
+<div class="col" style="gap: 2px; min-width: 0"><div class="lbl">VOG vraagt aandacht</div><div class="num">{{ kpi.vog }}</div><div class="mut">{{ kpi.vogHint }}</div></div>
+</div>
+<div class="card kpi in" style="animation-delay: 120ms">
+<div class="kico" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M4 13.5 6.2 6h11.6L20 13.5V18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"></path><path d="M4 13.5h4.5l1 2.5h5l1-2.5H20"></path></svg></div>
+<div class="col" style="gap: 2px; min-width: 0"><div class="lbl">Open aanvragen</div><div class="num">{{ kpi.req }}</div><div class="mut">van gezinshuizen</div></div>
+</div>
+<div class="card kpi in" style="animation-delay: 180ms">
+<div class="kico sage" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M3 6v12.5"></path><path d="M3 14h18v4.5"></path><path d="M21 14v-1.5a3 3 0 0 0-3-3h-7V14"></path><circle cx="7" cy="10.7" r="1.8"></circle></svg></div>
+<div class="col" style="gap: 2px; min-width: 0"><div class="lbl">Vrije plekken</div><div class="num">{{ kpi.vrij }}</div><div class="mut">{{ kpi.vrijHint }}</div></div>
+</div>
+</div>
+<div class="card">
+<div class="ch">
+<h2 class="h2">Gezinshuizen</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<label class="srch"><span class="vh">Zoek een gezinshuis</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input class="inp" type="search" placeholder="Zoek op naam of regio" onClick="{{ soon }}"></label>
+<sc-for list="{{ filters }}" as="fl" hint-placeholder-count="3">
+<button type="button" class="{{ fl.cls }}" aria-pressed="{{ fl.on }}" onClick="{{ fl.pick }}">{{ fl.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="overflow-x: auto">
+<div style="min-width: 1000px">
+<div class="row head g-h"><div>Gezinshuis</div><div>Bezetting</div><div>VOG</div><div>Dossier</div><div>Laatste huisbezoek</div><div></div></div>
+<sc-for list="{{ houses }}" as="h" hint-placeholder-count="6">
+<div class="row hov g-h in" style="animation-delay: {{ h.delay }}">
+<div class="who"><div class="hb" aria-hidden="true">{{ h.ini }}</div><div style="min-width: 0"><div style="font-weight: 700">{{ h.name }}</div><div class="mut">{{ h.regio }}</div></div></div>
+<div style="display: flex; align-items: center; gap: 10px"><div class="dots" aria-hidden="true"><sc-for list="{{ h.dots }}" as="o" hint-placeholder-count="4"><span class="{{ o.cls }}"></span></sc-for></div><div>{{ h.occText }}</div></div>
+<div><span class="{{ h.vogCls }}">{{ h.vogText }}</span></div>
+<div><span class="{{ h.dosCls }}">{{ h.dosText }}</span></div>
+<div>{{ h.visitText }}</div>
+<div style="justify-self: end"><button type="button" class="btn" aria-label="{{ h.openLabel }}" onClick="{{ h.open }}">Open</button></div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 20px; align-items: start">
+<div class="card">
+<div class="ch"><h2 class="h2">Aandacht nodig</h2><span class="chip c-mute">{{ attCount }}</span></div>
+<sc-for list="{{ att }}" as="a" hint-placeholder-count="4">
+<div class="row g2">
+<div class="col" style="gap: 5px; min-width: 0"><div><span class="{{ a.cls }}">{{ a.chip }}</span></div><div style="font-weight: 600">{{ a.text }}</div><div class="mut">{{ a.sub }}</div></div>
+<button type="button" class="btn" onClick="{{ a.open }}">Open huis</button>
+</div>
+</sc-for>
+</div>
+<div class="card">
+<div class="ch"><div><h2 class="h2">Documenten voor alle huizen</h2><div class="mut">Dezelfde set voor elk gezinshuis.</div></div><button type="button" class="btn ghost" onClick="{{ goDocs }}">Alle documenten</button></div>
+<sc-for list="{{ sharedTop }}" as="d" hint-placeholder-count="4">
+<div class="row g2"><div class="who"><div class="fico" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M7.5 3.5H14l4.5 4.5v11.5a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z"></path><path d="M14 3.5V8h4.5"></path></svg></div><div style="min-width: 0"><div style="font-weight: 600">{{ d.n }}</div><div class="mut">{{ d.meta }}</div></div></div><button type="button" class="btn" aria-label="{{ d.aria }}" onClick="{{ d.open }}">Open</button></div>
+</sc-for>
+</div>
+<div class="card">
+<div class="ch"><div><h2 class="h2">Nieuws voor de huizen</h2><div class="mut">Verschijnt ook op het portaal van elk gezinshuis.</div></div><button type="button" class="btn ghost" onClick="{{ soon }}">Bericht plaatsen</button></div>
+<sc-for list="{{ news }}" as="nw" hint-placeholder-count="3">
+<div class="row g1"><div class="col" style="gap: 4px"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span class="chip c-mute">{{ nw.cat }}</span><span class="mut">{{ nw.when }}</span></div><div style="font-weight: 600">{{ nw.title }}</div><div class="mut">{{ nw.text }}</div></div></div>
+</sc-for>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ scr.house }}" hint-placeholder-val="{{ false }}">
+<section class="screen">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 20px">
+<sc-for list="{{ H.facts }}" as="k" hint-placeholder-count="4">
+<div class="card col" style="gap: 4px; padding: 18px 22px">
+<div class="lbl">{{ k.label }}</div>
+<div class="num" style="font-size: 28px">{{ k.value }}</div>
+<div class="mut">{{ k.hint }}</div>
+</div>
+</sc-for>
+</div>
+<div class="card" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 14px 16px 14px 22px">
+<div class="lbl" style="margin-right: 8px">Snelle acties</div>
+<button type="button" class="btn pri" onClick="{{ soon }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5V5"></path><path d="m7.5 9.5 4.5-4.5 4.5 4.5"></path><path d="M5 19h14"></path></svg><span>VOG plaatsen</span></button>
+<button type="button" class="btn" onClick="{{ soon }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6v12.5"></path><path d="M3 14h18v4.5"></path><path d="M21 14v-1.5a3 3 0 0 0-3-3h-7V14"></path><circle cx="7" cy="10.7" r="1.8"></circle></svg><span>Vrije plekken bijwerken</span></button>
+<button type="button" class="btn" onClick="{{ soon }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6.5h14a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7.5a1 1 0 0 1 1-1z"></path><path d="M8 4v4M16 4v4M4 10.5h16"></path><path d="m9.5 15 1.8 1.8 3.4-3.4"></path></svg><span>Huisbezoek vastleggen</span></button>
+<button type="button" class="btn" onClick="{{ soon }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5H6.5a1 1 0 0 0-1 1V19a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V6.5a1 1 0 0 0-1-1H16"></path><path d="M9 4h6v3H9z"></path><path d="M9 12h6M9 16h4"></path></svg><span>Taak uitzetten</span></button>
+<button type="button" class="btn" onClick="{{ soon }}"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg><span>Aanvraag indienen</span></button>
+</div>
+<div role="tablist" aria-label="Onderdelen van dit huis" class="tabs">
+<sc-for list="{{ H.tabs }}" as="t" hint-placeholder-count="7">
+<button type="button" role="tab" class="{{ t.cls }}" aria-selected="{{ t.on }}" onClick="{{ t.pick }}">{{ t.label }}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{ H.t.ov }}" hint-placeholder-val="{{ true }}">
+<div class="in" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px; align-items: start">
+<div class="card">
+<div class="ch"><h2 class="h2">Aandachtspunten</h2></div>
+<sc-for list="{{ H.points }}" as="a" hint-placeholder-count="2">
+<div class="row g1"><div class="col" style="gap: 5px"><div><span class="{{ a.cls }}">{{ a.chip }}</span></div><div style="font-weight: 600">{{ a.text }}</div></div></div>
+</sc-for>
+<sc-if value="{{ H.noPoints }}" hint-placeholder-val="{{ false }}"><div class="row g1"><div class="mut">Alles op orde.</div></div></sc-if>
+</div>
+<div class="card">
+<div class="ch"><div><h2 class="h2">Snelkoppelingen</h2><div class="mut">Naar Drive, ONS en Zorgly.</div></div></div>
+<sc-for list="{{ H.links }}" as="l" hint-placeholder-count="5">
+<div class="row g3"><div style="font-weight: 600">{{ l.label }}</div><span class="chip c-mute">{{ l.where }}</span><button type="button" class="btn" aria-label="{{ l.aria }}" onClick="{{ l.open }}"><span>Open</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6.5H18V15"></path><path d="M18 6.5 7 17.5"></path></svg></button></div>
+</sc-for>
+</div>
+<div class="card">
+<div class="ch"><h2 class="h2">Profiel</h2></div>
+<sc-for list="{{ H.profile }}" as="p" hint-placeholder-count="4">
+<div class="row" style="grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr)"><div style="color: #55647A">{{ p.k }}</div><div style="font-weight: 600">{{ p.v }}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ H.t.vog }}" hint-placeholder-val="{{ false }}">
+<div class="card in">
+<div class="ch"><div><h2 class="h2">Medewerkers en VOG</h2><div class="mut">Bij Elkaar vraagt elke drie jaar een nieuwe VOG. Het portal waarschuwt 90 en 30 dagen voor de verloopdatum.</div></div></div>
+<div style="overflow-x: auto">
+<div style="min-width: 960px">
+<div class="row head g-vog"><div>Medewerker</div><div>Status</div><div>Timer</div><div></div></div>
+<sc-for list="{{ H.people }}" as="p" hint-placeholder-count="3">
+<div class="row hov g-vog">
+<div class="who"><div class="av" aria-hidden="true">{{ p.ini }}</div><div style="min-width: 0"><div style="font-weight: 700">{{ p.name }}</div><div class="mut">{{ p.fn }}</div></div></div>
+<div><span class="{{ p.cls }}">{{ p.label }}</span></div>
+<div style="display: flex; align-items: center; gap: 12px"><div class="ring" style="background: {{ p.ring }}" aria-hidden="true"><span></span></div><div><div style="font-weight: 700">{{ p.left }}</div><div class="mut">{{ p.untilText }}</div></div></div>
+<div class="act">
+<button type="button" class="btn" onClick="{{ p.soon }}">Bestand</button>
+<sc-if value="{{ p.canRemind }}" hint-placeholder-val="{{ false }}"><button type="button" class="btn" onClick="{{ p.soon }}">Herinner</button></sc-if>
+<button type="button" class="btn" onClick="{{ p.soon }}">Nieuwe VOG</button>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ H.t.kids }}" hint-placeholder-val="{{ false }}">
+<div class="card in">
+<div class="ch"><div><h2 class="h2">Kinderen</h2><div class="mut">Gegevens van kinderen staan in ONS. Het portal toont alleen een verwijzing naar het dossier.</div></div></div>
+<div class="row g1"><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px"><div class="dots" aria-hidden="true"><sc-for list="{{ H.dots }}" as="o" hint-placeholder-count="4"><span class="{{ o.cls }}"></span></sc-for></div><div style="font-weight: 600">{{ H.kidsSummary }}</div></div></div>
+<sc-for list="{{ H.kids }}" as="c" hint-placeholder-count="3">
+<div class="row hov" style="grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto"><div class="who"><div class="fico" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M7.5 3.5H14l4.5 4.5v11.5a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z"></path><path d="M14 3.5V8h4.5"></path></svg></div><div style="font-weight: 700">{{ c.ref }}</div></div><div style="color: #55647A">{{ c.since }}</div><button type="button" class="btn" onClick="{{ c.open }}"><span>Open in ONS</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6.5H18V15"></path><path d="M18 6.5 7 17.5"></path></svg></button></div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ H.t.dos }}" hint-placeholder-val="{{ false }}">
+<div class="card in">
+<div class="ch"><div><h2 class="h2">Dossier</h2><div class="mut">De stukken die elk gezinshuis op orde moet hebben.</div></div></div>
+<sc-for list="{{ H.dos }}" as="d" hint-placeholder-count="5">
+<div class="row hov" style="grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) auto"><div class="who"><div class="fico" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M7.5 3.5H14l4.5 4.5v11.5a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z"></path><path d="M14 3.5V8h4.5"></path></svg></div><div style="font-weight: 700">{{ d.n }}</div></div><div><span class="{{ d.cls }}">{{ d.st }}</span></div><button type="button" class="btn" onClick="{{ d.open }}"><span>Open in Drive</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6.5H18V15"></path><path d="M18 6.5 7 17.5"></path></svg></button></div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ H.t.toe }}" hint-placeholder-val="{{ false }}">
+<div class="col in" style="gap: 20px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 20px">
+<sc-for list="{{ H.toez }}" as="z" hint-placeholder-count="3">
+<div class="card col" style="gap: 6px; padding: 18px 22px">
+<div class="lbl">{{ z.label }}</div>
+<div class="num" style="font-size: 24px">{{ z.value }}</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span class="mut">{{ z.hint }}</span><sc-if value="{{ z.hasChip }}" hint-placeholder-val="{{ false }}"><span class="{{ z.cls }}">{{ z.chip }}</span></sc-if></div>
+</div>
+</sc-for>
+</div>
+<div class="card">
+<div class="ch"><h2 class="h2">Vastgelegd</h2></div>
+<sc-for list="{{ H.visits }}" as="v" hint-placeholder-count="2">
+<div class="row" style="grid-template-columns: 12px minmax(0, 0.9fr) minmax(0, 0.8fr) minmax(0, 2fr)"><span class="tdot" aria-hidden="true"></span><div style="font-weight: 700">{{ v.type }}</div><div>{{ v.date }}</div><div style="color: #55647A">{{ v.note }}</div></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ H.t.tak }}" hint-placeholder-val="{{ false }}">
+<div class="in" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: 20px; align-items: start">
+<div class="card">
+<div class="ch"><div><h2 class="h2">Taken</h2><div class="mut">Wat Bij Elkaar bij dit huis heeft uitgezet.</div></div></div>
+<sc-for list="{{ H.tasks }}" as="t" hint-placeholder-count="2">
+<div class="row g2">
+<div class="col" style="gap: 5px; min-width: 0"><div style="font-weight: 600">{{ t.title }}</div><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span class="{{ t.cls }}">{{ t.st }}</span><span class="mut">Uiterlijk {{ t.due }}</span></div></div>
+<div><sc-if value="{{ t.canDone }}" hint-placeholder-val="{{ false }}"><button type="button" class="btn" onClick="{{ t.soon }}">Afronden</button></sc-if></div>
+</div>
+</sc-for>
+<sc-if value="{{ H.noTasks }}" hint-placeholder-val="{{ false }}"><div class="row g1"><div class="mut">Geen taken.</div></div></sc-if>
+</div>
+<div class="card">
+<div class="ch"><div><h2 class="h2">Aanvragen</h2><div class="mut">Wat voor dit huis is aangevraagd.</div></div></div>
+<sc-for list="{{ H.reqs }}" as="r" hint-placeholder-count="2">
+<div class="row g1">
+<div class="col" style="gap: 5px"><div style="font-weight: 600">{{ r.type }}</div><div style="color: #55647A">{{ r.text }}</div><div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><span class="{{ r.cls }}">{{ r.st }}</span><span class="mut">{{ r.when }}</span></div></div>
+</div>
+</sc-for>
+<sc-if value="{{ H.noReqs }}" hint-placeholder-val="{{ false }}"><div class="row g1"><div class="mut">Geen aanvragen.</div></div></sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ H.t.log }}" hint-placeholder-val="{{ false }}">
+<div class="card in">
+<div class="ch"><h2 class="h2">Logboek van dit huis</h2></div>
+<sc-for list="{{ H.log }}" as="l" hint-placeholder-count="3">
+<div class="row" style="grid-template-columns: 12px minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 2.4fr)"><span class="tdot" aria-hidden="true"></span><div style="color: #55647A">{{ l.when }}</div><div style="font-weight: 600">{{ l.who }}</div><div>{{ l.text }}</div></div>
+</sc-for>
+<sc-if value="{{ H.noLog }}" hint-placeholder-val="{{ false }}"><div class="row g1"><div class="mut">Nog niets vastgelegd.</div></div></sc-if>
+</div>
+</sc-if>
+</section>
+</sc-if>
+
+<sc-if value="{{ scr.nw }}" hint-placeholder-val="{{ false }}">
+<section class="screen">
+<sc-for list="{{ pipe }}" as="a" hint-placeholder-count="2">
+<div class="card pad col" style="gap: 20px">
+<div class="cf">
+<div class="who"><div class="hb" aria-hidden="true">{{ a.ini }}</div><div><h2 class="h2">{{ a.name }}</h2><div class="mut">{{ a.regio }}</div></div></div>
+<button type="button" class="btn pri" onClick="{{ a.next }}">Stap afronden</button>
+</div>
+<div style="overflow-x: auto; padding: 12px 0 4px">
+<ol class="steps">
+<sc-for list="{{ a.steps }}" as="s" hint-placeholder-count="6">
+<li class="{{ s.cls }}"><div class="sline"><span class="sl"></span><span class="sdot">{{ s.n }}</span><span class="sr"></span></div><div class="slab">{{ s.label }}</div></li>
+</sc-for>
+</ol>
+</div>
+<div class="note">{{ a.now }}</div>
+</div>
+</sc-for>
+</section>
+</sc-if>
+
+<sc-if value="{{ scr.reqs }}" hint-placeholder-val="{{ false }}">
+<section class="screen">
+<div class="card" style="padding-top: 16px">
+<div style="overflow-x: auto">
+<div style="min-width: 1030px">
+<div class="row head g-req"><div>Gezinshuis</div><div>Aanvraag</div><div>Ingediend</div><div>Status</div><div></div></div>
+<sc-for list="{{ reqs }}" as="r" hint-placeholder-count="4">
+<div class="row hov g-req">
+<div class="who"><div class="hb" aria-hidden="true">{{ r.ini }}</div><div style="font-weight: 700">{{ r.house }}</div></div>
+<div><div style="font-weight: 600">{{ r.type }}</div><div class="mut">{{ r.text }}</div></div>
+<div>{{ r.when }}</div>
+<div><span class="{{ r.cls }}">{{ r.st }}</span></div>
+<div class="act">
+<sc-if value="{{ r.canBusy }}" hint-placeholder-val="{{ false }}"><button type="button" class="btn" onClick="{{ r.soon }}">In behandeling</button></sc-if>
+<sc-if value="{{ r.canDone }}" hint-placeholder-val="{{ false }}"><button type="button" class="btn pri" onClick="{{ r.soon }}">Afhandelen</button></sc-if>
+<button type="button" class="btn" onClick="{{ r.open }}">Open huis</button>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ scr.docs }}" hint-placeholder-val="{{ false }}">
+<section class="screen">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr)); gap: 20px">
+<sc-for list="{{ shared }}" as="d" hint-placeholder-count="8">
+<div class="card col" style="gap: 14px; padding: 20px 22px">
+<div class="cf"><div class="fico" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M7.5 3.5H14l4.5 4.5v11.5a1 1 0 0 1-1 1h-10a1 1 0 0 1-1-1v-15a1 1 0 0 1 1-1z"></path><path d="M14 3.5V8h4.5"></path></svg></div><span class="chip c-mute">{{ d.where }}</span></div>
+<div class="col" style="gap: 2px"><div style="font-weight: 700; font-size: 15px">{{ d.n }}</div><div class="mut">{{ d.kind }}</div></div>
+<div style="margin-top: auto"><button type="button" class="btn" aria-label="{{ d.aria }}" onClick="{{ d.open }}"><span>Open</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6.5H18V15"></path><path d="M18 6.5 7 17.5"></path></svg></button></div>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ scr.log }}" hint-placeholder-val="{{ false }}">
+<section class="screen">
+<div class="card" style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 12px 16px 12px 22px">
+<div class="lbl" style="margin-right: 8px">Gezinshuis</div>
+<sc-for list="{{ logFilters }}" as="fl" hint-placeholder-count="7">
+<button type="button" class="{{ fl.cls }}" aria-pressed="{{ fl.on }}" onClick="{{ fl.pick }}">{{ fl.label }}</button>
+</sc-for>
+</div>
+<div class="card" style="padding-top: 16px">
+<div style="overflow-x: auto">
+<div style="min-width: 830px">
+<div class="row head g-log"><div>Wanneer</div><div>Wie</div><div>Wat</div><div>Gezinshuis</div></div>
+<sc-for list="{{ logRows }}" as="l" hint-placeholder-count="8">
+<div class="row hov g-log"><div style="color: #55647A">{{ l.when }}</div><div class="who"><div class="av" aria-hidden="true">{{ l.ini }}</div><div style="font-weight: 600">{{ l.who }}</div></div><div>{{ l.text }}</div><div>{{ l.house }}</div></div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ scr.roles }}" hint-placeholder-val="{{ false }}">
+<section class="screen">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 20px">
+<div class="card pad col" style="gap: 8px"><div><span class="chip c-ok">Admin</span></div><div style="font-weight: 700; font-size: 15px">Eigenaren van Bij Elkaar</div><div style="color: #55647A">Zien alles en voeren acties uit.</div></div>
+<div class="card pad col" style="gap: 8px"><div><span class="chip c-mute">Viewer</span></div><div style="font-weight: 700; font-size: 15px">Medewerkers van Bij Elkaar</div><div style="color: #55647A">Inzien, niets wijzigen.</div></div>
+<div class="card pad col" style="gap: 8px"><div><span class="chip c-warn">Audit</span></div><div style="font-weight: 700; font-size: 15px">Gemeenten</div><div style="color: #55647A">Toezicht op wat is vrijgegeven.</div></div>
+<div class="card pad col" style="gap: 8px"><div><span class="chip c-sage">Gezinshuis</span></div><div style="font-weight: 700; font-size: 15px">Het huis zelf</div><div style="color: #55647A">Alleen de eigen gegevens.</div></div>
+</div>
+<div class="card">
+<div class="ch"><h2 class="h2">Gebruikers</h2></div>
+<div style="overflow-x: auto">
+<div style="min-width: 800px">
+<div class="row head g-user"><div>Naam</div><div>E-mail</div><div>Rol</div><div>Toegang</div></div>
+<sc-for list="{{ users }}" as="u" hint-placeholder-count="5">
+<div class="row hov g-user"><div class="who"><div class="av" aria-hidden="true">{{ u.ini }}</div><div style="font-weight: 700">{{ u.name }}</div></div><div>{{ u.mail }}</div><div><span class="{{ u.cls }}">{{ u.role }}</span></div><div>{{ u.scope }}</div></div>
+</sc-for>
+</div>
+</div>
+</div>
+<div class="card">
+<div class="ch"><div><h2 class="h2">Wat elke rol ziet</h2><div class="mut">Per gegeven stel je in of een rol het te zien krijgt.</div></div></div>
+<div style="overflow-x: auto">
+<div style="min-width: 770px">
+<div class="row head g-vis"><div>Gegeven</div><div>Admin</div><div>Viewer</div><div>Audit</div></div>
+<sc-for list="{{ vis }}" as="v" hint-placeholder-count="9">
+<div class="row g-vis">
+<div><div style="font-weight: 700">{{ v.label }}</div><div class="mut">{{ v.desc }}</div></div>
+<div style="color: #55647A">Altijd</div>
+<div><button type="button" role="switch" class="{{ v.vCls }}" aria-checked="{{ v.vOn }}" aria-label="{{ v.vAria }}" onClick="{{ v.soon }}"><span class="trk" aria-hidden="true"></span><span>{{ v.vText }}</span></button></div>
+<div><button type="button" role="switch" class="{{ v.aCls }}" aria-checked="{{ v.aOn }}" aria-label="{{ v.aAria }}" onClick="{{ v.soon }}"><span class="trk" aria-hidden="true"></span><span>{{ v.aText }}</span></button></div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div class="note">Van een huis met een geheime locatie zien alleen admins en het huis zelf de regio en het adres.</div>
+</section>
+</sc-if>
+</main>
+
+<div class="foot">
+<svg class="wv w1" viewBox="0 0 2880 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50 Q360 10 720 50 T1440 50 T2160 50 T2880 50 V160 H0 Z"></path></svg>
+<svg class="wv w2" viewBox="0 0 2880 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 74 Q180 46 360 74 T720 74 T1080 74 T1440 74 T1800 74 T2160 74 T2520 74 T2880 74 V160 H0 Z"></path></svg>
+<svg class="wv w3" viewBox="0 0 2880 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 96 Q360 70 720 96 T1440 96 T2160 96 T2880 96 V160 H0 Z"></path></svg>
+<div class="foot-txt">Schermontwerp voor Bij Elkaar. Nog geen werkend systeem, alle gegevens zijn fictief.</div>
+</div>
+
+<sc-if value="{{ toast.show }}" hint-placeholder-val="{{ false }}"><div class="toastw"><div class="toast" role="status"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 11v5M12 8v.5"></path></svg><span>{{ toast.text }}</span></div></div></sc-if>
+</div>
+</template>
+<script>
+class DCLogic { constructor() { this.props = {}; this.state = {}; } setState(s) { this.state = Object.assign({}, this.state, s); render(); } }
+
+class Component extends DCLogic {
+  D() {
+    if (this._d) return this._d;
+    const now = Date.now(), DAY = 86400000;
+    const houses = [
+      { id: 'h1', name: 'De Linde', regio: 'Regio Noordwest', vorm: 'Regulier gezinshuis', spec: 'Hechting en trauma', cap: 4, bezet: 3, secret: false, adres: 'Lindelaan 12, Voorbeeldstad', visit: 48, evalIn: 115, miss: '', warn: 'Risico-analyse' },
+      { id: 'h2', name: 'Het Anker', regio: 'Regio Noord', vorm: 'Gezinshuis inclusief behandeling', spec: 'Vroegkinderlijk trauma', cap: 4, bezet: 4, secret: false, adres: 'Havenkade 3, Voorbeeldstad', visit: 12, evalIn: 210, miss: '', warn: '' },
+      { id: 'h3', name: 'Noorderzon', regio: 'Regio Midden', vorm: 'Regulier gezinshuis', spec: 'Hechting', cap: 3, bezet: 2, secret: false, adres: 'Heideweg 27, Voorbeelddorp', visit: 201, evalIn: -14, miss: 'Verwerkersovereenkomst', warn: '' },
+      { id: 'h4', name: 'De Boomgaard', regio: 'Regio Oost', vorm: 'Gezinshuis inclusief intensieve behandeling', spec: 'Trauma en beperking', cap: 4, bezet: 4, secret: true, adres: 'Fruitlaan 8, Voorbeeldstad', visit: 33, evalIn: 64, miss: '', warn: '' },
+      { id: 'h5', name: 'Zeven Eiken', regio: 'Regio Zuid', vorm: 'Regulier gezinshuis', spec: 'Hechting en trauma', cap: 5, bezet: 3, secret: false, adres: 'Eikenlaan 7, Voorbeelddorp', visit: 95, evalIn: 24, miss: '', warn: '' },
+      { id: 'h6', name: 'De Vlonder', regio: 'Regio West', vorm: 'Time-out en crisisopvang', spec: 'Kortdurend verblijf', cap: 3, bezet: 3, secret: false, adres: 'Kadeweg 41, Voorbeeldstad', visit: 20, evalIn: 300, miss: '', warn: '' }
+    ];
+    const P = [['h1', 'Marit van Dalen', 0, 412], ['h1', 'Joost van Dalen', 0, 38], ['h1', 'Roos Verbeek', 1, -12], ['h2', 'Esther Hofman', 0, 655], ['h2', 'Bas Hofman', 0, 655], ['h2', 'Lotte Kuiper', 1, 240], ['h3', 'Ilse Brouwer', 0, 84], ['h3', 'Ruben Brouwer', 0, 501], ['h4', 'Anouk Meijer', 0, 933], ['h4', 'Stijn Meijer', 0, 21], ['h4', 'Femke de Groot', 1, 370], ['h5', 'Hanna Postma', 0, 720], ['h5', 'Wouter Postma', 0, 720], ['h6', 'Mila Jacobs', 0, 150], ['h6', 'Thijs Jacobs', 0, 1002]];
+    const L = [[35, 'Eva Smit', 'Taak uitgezet: Nieuwe VOG uploaden voor Roos Verbeek', 'h1'], [190, 'Gezinshuis Het Anker', 'Vrije plekken bijgewerkt: 0 vrij', 'h2'], [1560, 'Gezinshuis Noorderzon', 'Aanvraag ingediend: Vraag aan manager gezinshuizen', 'h3'], [1800, 'Noor Willems', 'Huis geraadpleegd', 'h4'], [2940, 'Gezinshuis De Linde', 'Aanvraag ingediend: VOG-aanvraag klaarzetten', 'h1'], [4440, 'Eva Smit', 'Huisbezoek vastgelegd', 'h6'], [7200, 'Toezicht gemeente', 'Huis geraadpleegd', 'h5'], [12960, 'Ruud Dekker', 'Aanvraag afgehandeld: Wijziging profiel of plekken', 'h6']];
+    const DOCS = [['Aanmeldprocedure gezinshuizen', 'Procedure', 'Drive'], ['Doelgroep en aanbod', 'Beleid', 'Drive'], ['Meldcode huiselijk geweld en kindermishandeling', 'Protocol', 'Drive'], ['Handboek voor gezinshuizen', 'Handboek', 'Drive'], ['Format jaarevaluatie', 'Format', 'Drive'], ['Format verslag huisbezoek', 'Format', 'Drive'], ['Format inbreng gezinshuisoverleg', 'Format', 'Drive'], ["Huisstijl en logo's", 'Huisstijl', 'Drive'], ['Kwaliteitssysteem voor gezinshuizen', 'Kwaliteit', 'Zorgly']];
+    this._d = {
+      now: now,
+      houses: houses,
+      people: P.map((p, i) => ({ id: 'p' + (i + 1), h: p[0], name: p[1], fn: p[2] ? 'Pedagogisch medewerker' : 'Gezinshuisouder', vog: p[3] })),
+      tasks: [
+        { id: 't1', h: 'h1', title: 'Nieuwe VOG uploaden voor Roos Verbeek', due: 7, st: 'open' },
+        { id: 't2', h: 'h1', title: 'Risico-analyse herzien', due: 38, st: 'open' },
+        { id: 't3', h: 'h3', title: 'Verwerkersovereenkomst getekend terugsturen', due: -5, st: 'open' },
+        { id: 't4', h: 'h4', title: 'Nieuwe VOG uploaden voor Stijn Meijer', due: 14, st: 'open' },
+        { id: 't5', h: 'h5', title: 'Jaarevaluatie voorbereiden met het format', due: 20, st: 'open' },
+        { id: 't6', h: 'h2', title: 'Huisprofiel controleren', due: -30, st: 'done' }
+      ],
+      reqs: [
+        { id: 'r1', h: 'h3', type: 'Vraag aan manager gezinshuizen', text: 'Kan het huisbezoek van december een week later?', ts: now - 26 * 3600000, st: 'new' },
+        { id: 'r2', h: 'h1', type: 'VOG-aanvraag klaarzetten', text: 'Voor een invalkracht die in januari start.', ts: now - 49 * 3600000, st: 'new' },
+        { id: 'r3', h: 'h5', type: 'Nieuwe medewerker aanmelden', text: 'Pedagogisch medewerker voor 16 uur per week.', ts: now - 5 * DAY, st: 'busy' },
+        { id: 'r4', h: 'h6', type: 'Wijziging profiel of plekken', text: 'Vanaf februari één plek voor time-out erbij.', ts: now - 9 * DAY, st: 'done' }
+      ],
+      shared: DOCS.map((d) => ({ n: d[0], kind: d[1], where: d[2] })),
+      pipe: [
+        { id: 'a1', name: 'Morgenster', regio: 'Regio Zuid', step: 4 },
+        { id: 'a2', name: 'Het Koetshuis', regio: 'Regio West', step: 1 }
+      ],
+      users: [
+        { name: 'Eva Smit', mail: 'eva@voorbeeld.example', role: 'admin', scope: 'Alle huizen' },
+        { name: 'Ruud Dekker', mail: 'ruud@voorbeeld.example', role: 'admin', scope: 'Alle huizen' },
+        { name: 'Noor Willems', mail: 'noor@voorbeeld.example', role: 'viewer', scope: 'Alle huizen' },
+        { name: 'Toezicht gemeente', mail: 'toezicht@voorbeeld.example', role: 'audit', scope: 'Vrijgegeven gegevens' },
+        { name: 'Gezinshuis De Linde', mail: 'delinde@voorbeeld.example', role: 'huis', scope: 'Eigen huis' }
+      ],
+      vis: {
+        viewer: { adres: true, namen: true, vog: true, vogfile: false, kids: true, ons: true, stuk: true, versl: true, taken: true },
+        audit: { adres: false, namen: false, vog: true, vogfile: false, kids: true, ons: false, stuk: true, versl: false, taken: false }
+      },
+      log: L.map((l) => ({ ts: now - l[0] * 60000, who: l[1], text: l[2], h: l[3] }))
+    };
+    return this._d;
+  }
+  set(patch) { this.setState(Object.assign({}, this.state || {}, patch)); }
+  componentWillUnmount() { clearTimeout(this._t); }
+  fmt(ts) { const d = new Date(ts); return d.getDate() + ' ' + ['jan', 'feb', 'mrt', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'][d.getMonth()] + ' ' + d.getFullYear(); }
+  ago(ts, now) {
+    const m = Math.round((now - ts) / 60000);
+    if (m < 60) return m + ' min geleden';
+    const u = Math.round(m / 60);
+    if (u < 24) return u + ' uur geleden';
+    const d = Math.round(u / 24);
+    return d === 1 ? 'gisteren' : d + ' dagen geleden';
+  }
+  dgn(n) { return n === 1 ? '1 dag' : n + ' dagen'; }
+  ini(name) {
+    const w = String(name).trim().split(' ').filter((x) => x);
+    const s = w.length > 1 ? w[0].charAt(0) + w[w.length - 1].charAt(0) : (w[0] || '').slice(0, 2);
+    return s.toUpperCase();
+  }
+  vogOf(p, now) {
+    const d = p.vog, st = d < 0 ? 'bad' : (d <= 90 ? 'warn' : 'ok');
+    const deg = Math.max(10, Math.min(360, Math.round(d / 1095 * 360)));
+    return {
+      name: p.name, fn: p.fn, days: d, st: st,
+      label: d < 0 ? 'Verlopen' : (d <= 90 ? 'Verloopt binnenkort' : 'Geldig'),
+      left: d < 0 ? this.dgn(-d) + ' verlopen' : 'nog ' + this.dgn(d),
+      until: this.fmt(now + d * 86400000),
+      ring: st === 'bad' ? 'conic-gradient(#A4262C 360deg, #E3ECF6 0deg)' : 'conic-gradient(' + (st === 'warn' ? '#C97A0A' : '#2166D6') + ' ' + deg + 'deg, #E3ECF6 0deg)'
+    };
+  }
+  dossier(h) {
+    return [['Samenwerkingsovereenkomst', 'Getekend'], ['Verwerkersovereenkomst', 'Getekend'], ['Huisprofiel en doelgroep', 'Vastgesteld'], ['Risico-analyse', 'Actueel'], ['Afwijkingenregister', 'Bijgewerkt']].map((d) => {
+      const st = h.miss === d[0] ? 'bad' : (h.warn === d[0] ? 'warn' : 'ok');
+      return { n: d[0], st: st, text: st === 'bad' ? 'Ontbreekt' : (st === 'warn' ? 'Herzien nodig' : d[1]) };
+    });
+  }
+  renderVals() {
+    const D = this.D(), st = this.state || {}, now = D.now, DAY = 86400000;
+    const SCREENS = ['dash', 'house', 'new', 'reqs', 'docs', 'log', 'roles'];
+    const screen = SCREENS.indexOf(st.screen) >= 0 ? st.screen : 'dash';
+    const chip = (s) => 'chip st c-' + s;
+    const go = (s) => () => this.set({ screen: s, toast: '' });
+    const openHouse = (id, tab) => () => this.set({ screen: 'house', houseId: id, tab: tab || 'ov', toast: '' });
+    const soon = () => {
+      clearTimeout(this._t);
+      this._t = setTimeout(() => { this.set({ toast: '' }); }, 3400);
+      this.set({ toast: 'Dit is een schermontwerp. Deze functie is nog niet gebouwd.' });
+    };
+    const byId = {};
+    D.houses.forEach((x) => { byId[x.id] = x; });
+    const hname = (id) => (byId[id] ? byId[id].name : 'Alle huizen');
+    const dotsOf = (n, cap) => { const out = []; for (let i = 0; i < cap; i++) out.push({ cls: 'dt' + (i < n ? ' on' : '') }); return out; };
+    const sum = (x) => {
+      const ps = D.people.filter((p) => p.h === x.id).map((p) => this.vogOf(p, now));
+      const bad = ps.filter((v) => v.st === 'bad').length, warn = ps.filter((v) => v.st === 'warn').length;
+      const dos = this.dossier(x), dBad = dos.some((d) => d.st === 'bad'), dWarn = dos.some((d) => d.st === 'warn');
+      return { ps: ps, bad: bad, vogSt: bad ? 'bad' : (warn ? 'warn' : 'ok'), dos: dos, dosSt: dBad ? 'bad' : (dWarn ? 'warn' : 'ok'), dosText: dBad ? 'Onvolledig' : (dWarn ? 'Actie nodig' : 'Compleet') };
+    };
+    const rows = D.houses.map((x) => ({ x: x, a: sum(x), vrij: x.cap - x.bezet }));
+    const att = [];
+    rows.forEach((r) => {
+      const id = r.x.id;
+      r.a.ps.forEach((v) => {
+        if (v.st !== 'bad' && v.days > 30) return;
+        const bad = v.st === 'bad';
+        att.push({ w: bad ? 0 : 1, hid: id, cls: chip(bad ? 'bad' : 'warn'), chip: bad ? 'VOG verlopen' : 'VOG verloopt', text: v.name + ': ' + v.left, sub: r.x.name, open: openHouse(id, 'vog') });
+      });
+      r.a.dos.forEach((d) => { if (d.st === 'bad') att.push({ w: 0, hid: id, cls: chip('bad'), chip: 'Dossier', text: d.n + ' ontbreekt', sub: r.x.name, open: openHouse(id, 'dos') }); });
+      if (r.x.visit > 180) att.push({ w: 2, hid: id, cls: chip('warn'), chip: 'Toezicht', text: 'Geen huisbezoek in de laatste zes maanden', sub: r.x.name, open: openHouse(id, 'toe') });
+      if (r.x.evalIn < 0) att.push({ w: 2, hid: id, cls: chip('warn'), chip: 'Toezicht', text: 'Jaarevaluatie staat nog open', sub: r.x.name, open: openHouse(id, 'toe') });
+    });
+    att.sort((p, q) => p.w - q.w);
+
+    const openReqs = D.reqs.filter((r) => r.st !== 'done').length;
+    const NAV = [['dash', 'Overzicht'], ['new', 'Nieuwe huizen'], ['reqs', 'Aanvragen'], ['docs', 'Documenten'], ['log', 'Logboek'], ['roles', 'Rollen']];
+    const nav = NAV.map((it) => {
+      const on = screen === it[0] || (it[0] === 'dash' && screen === 'house');
+      return { label: it[1], cls: 'navi' + (on ? ' on' : ''), go: go(it[0]), hasBadge: it[0] === 'reqs' && openReqs > 0, badge: String(openReqs) };
+    });
+    const houses = rows.map((r, i) => ({
+      name: r.x.name, ini: this.ini(r.x.name), regio: r.x.regio, delay: (i * 40) + 'ms',
+      dots: dotsOf(r.x.bezet, r.x.cap), occText: r.x.bezet + ' van ' + r.x.cap,
+      vogCls: chip(r.a.vogSt), vogText: r.a.vogSt === 'bad' ? 'Verlopen' : (r.a.vogSt === 'warn' ? 'Verloopt binnenkort' : 'Geldig'),
+      dosCls: chip(r.a.dosSt), dosText: r.a.dosText,
+      visitText: this.fmt(now - r.x.visit * DAY), openLabel: 'Open ' + r.x.name, open: openHouse(r.x.id, 'ov')
+    }));
+    const segs = (labels) => labels.map((label, i) => ({ label: label, on: i === 0, cls: 'seg' + (i === 0 ? ' on' : ''), pick: soon }));
+    const soonPeople = D.people.filter((p) => p.vog <= 90), expired = soonPeople.filter((p) => p.vog < 0).length;
+    const vrijTot = rows.reduce((n, r) => n + r.vrij, 0), vrijHuizen = rows.filter((r) => r.vrij > 0).length;
+    const kpi = {
+      huizen: String(D.houses.length), huizenHint: D.pipe.length + ' in aanloop',
+      vog: String(soonPeople.length), vogHint: expired ? expired + ' al verlopen' : 'verloopt binnen 90 dagen',
+      req: String(openReqs),
+      vrij: String(vrijTot), vrijHint: 'in ' + vrijHuizen + (vrijHuizen === 1 ? ' huis' : ' huizen')
+    };
+    const docRow = (d) => ({ n: d.n, kind: d.kind, where: d.where, meta: d.kind + ' · ' + d.where, aria: 'Open ' + d.n, open: soon });
+
+    const h = byId[st.houseId] || D.houses[0], a = sum(h), vrij = h.cap - h.bezet, hi = D.houses.indexOf(h);
+    const TABS = [['ov', 'Overzicht'], ['vog', 'Medewerkers en VOG'], ['kids', 'Kinderen'], ['dos', 'Dossier'], ['toe', 'Toezicht'], ['tak', 'Taken en aanvragen'], ['log', 'Logboek']];
+    const tab = TABS.some((t) => t[0] === st.tab) ? st.tab : 'ov';
+    const SINCE = ['sep 2024', 'mrt 2025', 'aug 2025', 'feb 2026', 'jun 2026'];
+    const kids = [];
+    for (let i = 0; i < h.bezet; i++) {
+      const s = SINCE[i % 5];
+      kids.push({ ref: 'Dossier ' + s.slice(-4) + '-' + ('0' + (17 + hi * 11 + i * 13)).slice(-3), since: 'Geplaatst sinds ' + s, open: soon });
+    }
+    const taskRow = (t) => {
+      const late = t.st === 'open' && t.due < 0;
+      return { title: t.title, due: this.fmt(now + t.due * DAY), cls: chip(t.st === 'done' ? 'ok' : (late ? 'bad' : 'warn')), st: t.st === 'done' ? 'Afgerond' : (late ? 'Te laat' : 'Open'), canDone: t.st === 'open', soon: soon };
+    };
+    const reqRow = (r) => ({ house: hname(r.h), ini: this.ini(hname(r.h)), type: r.type, text: r.text, when: this.ago(r.ts, now), cls: chip(r.st === 'done' ? 'ok' : (r.st === 'busy' ? 'mute' : 'warn')), st: r.st === 'done' ? 'Afgehandeld' : (r.st === 'busy' ? 'In behandeling' : 'Nieuw'), canBusy: r.st === 'new', canDone: r.st !== 'done', soon: soon, open: openHouse(r.h, 'tak') });
+    const points = att.filter((p) => p.hid === h.id);
+    const hTasks = D.tasks.filter((t) => t.h === h.id).map(taskRow), hReqs = D.reqs.filter((r) => r.h === h.id).map(reqRow);
+    const hLog = D.log.filter((l) => l.h === h.id).map((l) => ({ when: this.ago(l.ts, now), who: l.who, text: l.text }));
+    const H = {
+      facts: [
+        { label: 'Bezetting', value: h.bezet + ' / ' + h.cap, hint: 'plekken bezet' },
+        { label: 'Vrije plekken', value: String(vrij), hint: vrij ? 'beschikbaar voor plaatsing' : 'geen plek vrij' },
+        { label: 'VOG geldig', value: (a.ps.length - a.bad) + ' / ' + a.ps.length, hint: a.vogSt === 'ok' ? 'alle medewerkers' : 'actie nodig' },
+        { label: 'Dossier', value: a.dosText, hint: a.dos.length + ' verplichte stukken' }
+      ],
+      tabs: TABS.map((t) => ({ label: t[1], on: tab === t[0], cls: 'tab' + (tab === t[0] ? ' on' : ''), pick: () => this.set({ tab: t[0], toast: '' }) })),
+      t: { ov: tab === 'ov', vog: tab === 'vog', kids: tab === 'kids', dos: tab === 'dos', toe: tab === 'toe', tak: tab === 'tak', log: tab === 'log' },
+      points: points, noPoints: points.length === 0,
+      links: [['Map van dit huis', 'Drive'], ['Verslagen van huisbezoek', 'Drive'], ['Formats van Team Wonen', 'Drive'], ['Locatie en wachtlijst', 'ONS'], ['Kwaliteitssysteem van dit huis', 'Zorgly']].map((l) => ({ label: l[0], where: l[1], aria: 'Open ' + l[0], open: soon })),
+      profile: [{ k: 'Verblijfsvorm', v: h.vorm }, { k: 'Specialisme', v: h.spec }, { k: 'Capaciteit', v: h.cap + ' plekken' }, { k: 'Gezinshuisouders', v: a.ps.filter((v) => v.fn === 'Gezinshuisouder').map((v) => v.name).join(' en ') }],
+      people: a.ps.map((v) => ({ name: v.name, ini: this.ini(v.name), fn: v.fn, cls: chip(v.st), label: v.label, ring: v.ring, left: v.left, untilText: (v.days < 0 ? 'verliep op ' : 'geldig tot ') + v.until, canRemind: v.st !== 'ok', soon: soon })),
+      kids: kids, dots: dotsOf(h.bezet, h.cap),
+      kidsSummary: h.bezet + ' van ' + h.cap + ' plekken bezet, ' + (vrij === 0 ? 'geen plek vrij' : (vrij === 1 ? '1 plek vrij' : vrij + ' plekken vrij')),
+      dos: a.dos.map((d) => ({ n: d.n, cls: chip(d.st), st: d.text, open: soon })),
+      toez: [
+        { label: 'Laatste huisbezoek', value: this.fmt(now - h.visit * DAY), hint: this.dgn(h.visit) + ' geleden', hasChip: h.visit > 180, cls: chip('warn'), chip: 'Langer dan zes maanden' },
+        { label: 'Volgende jaarevaluatie', value: this.fmt(now + h.evalIn * DAY), hint: h.evalIn < 0 ? this.dgn(-h.evalIn) + ' over tijd' : 'over ' + this.dgn(h.evalIn), hasChip: h.evalIn < 30, cls: chip(h.evalIn < 0 ? 'bad' : 'warn'), chip: h.evalIn < 0 ? 'Staat open' : 'Binnen 30 dagen' },
+        { label: 'Laatste gezinshuisoverleg', value: this.fmt(now - 23 * DAY), hint: 'inbreng aangeleverd', hasChip: false, cls: 'chip c-mute', chip: '' }
+      ],
+      visits: [
+        { type: 'Huisbezoek', date: this.fmt(now - h.visit * DAY), note: 'Verslag staat in Drive.' },
+        { type: 'Jaarevaluatie', date: this.fmt(now + (h.evalIn - 365) * DAY), note: 'Verslag staat in Drive.' }
+      ],
+      tasks: hTasks, noTasks: hTasks.length === 0, reqs: hReqs, noReqs: hReqs.length === 0,
+      log: hLog, noLog: hLog.length === 0
+    };
+
+    const onHouse = screen === 'house';
+    const heads = {
+      dash: ['Overzicht', 'Alle gezinshuizen in één beeld, stand van ' + this.fmt(now) + '.'],
+      house: [h.name, h.regio + ' · ' + h.vorm + ' · ' + h.spec],
+      new: ['Nieuwe huizen', 'Van eerste aanvraag tot start, met per stap wie aan zet is.'],
+      reqs: ['Aanvragen', 'Wat de gezinshuizen hebben aangevraagd.'],
+      docs: ['Documenten', 'De set die voor elk gezinshuis hetzelfde is.'],
+      log: ['Logboek', 'Wie wat heeft gedaan of ingezien, nieuwste bovenaan.'],
+      roles: ['Rollen en zichtbaarheid', 'Wie mag inloggen, en wat elke rol te zien krijgt.']
+    };
+    const head = heads[screen] || heads.dash;
+    const hero = {
+      title: head[0], sub: head[1],
+      back: onHouse, goBack: go('dash'),
+      isHouse: onHouse, secret: onHouse && h.secret,
+      hasLine: onHouse, line: h.adres,
+      hasAction: screen === 'log' || screen === 'roles',
+      actionLabel: screen === 'log' ? 'Exporteer als CSV' : 'Gebruiker toevoegen'
+    };
+
+    const STEPS = ['Aanvraag', 'Eerste beoordeling', 'Gesprekken en screening', 'Besluit directie', 'Overeenkomst en checklist', 'Start'];
+    const OWN = ['Zorgcoördinator', 'Algemeen manager', 'Manager gezinshuizen', 'Directie', 'Manager gezinshuizen', 'Manager gezinshuizen'];
+    const pipe = D.pipe.map((p) => ({
+      name: p.name, ini: this.ini(p.name), regio: p.regio,
+      now: 'Nu: ' + STEPS[p.step] + '. Aan zet: ' + OWN[p.step] + '.',
+      steps: STEPS.map((label, i) => ({ label: label, n: String(i + 1), cls: 'stp ' + (i < p.step ? 'done' : (i === p.step ? 'cur' : 'todo')) + (i === 0 ? ' first' : '') + (i === STEPS.length - 1 ? ' last' : '') })),
+      next: soon
+    }));
+
+    const RL = { admin: 'Admin', viewer: 'Viewer', audit: 'Audit', huis: 'Gezinshuis' };
+    const RC = { admin: 'chip c-ok', viewer: 'chip c-mute', audit: 'chip c-warn', huis: 'chip c-sage' };
+    const VIS = [['adres', 'Adres en locatie', 'Straat en plaats van het huis'], ['namen', 'Namen van medewerkers', 'Gezinshuisouders en medewerkers bij naam'], ['vog', 'VOG-status', 'Geldig, verloopt binnenkort of verlopen'], ['vogfile', 'VOG-bestanden', 'Het geüploade document zelf'], ['kids', 'Aantal kinderen', 'Bezetting en vrije plekken'], ['ons', 'Verwijzingen naar ONS', 'Dossiernummers en links naar ONS en Zorgly'], ['stuk', 'Stukken in het dossier', 'Overeenkomsten en kwaliteitsstukken'], ['versl', 'Verslagen van toezicht', 'Notities bij huisbezoek en evaluatie'], ['taken', 'Taken en aanvragen', 'Wat openstaat tussen kantoor en huis']];
+
+    return {
+      soon: soon,
+      nav: nav, hero: hero,
+      scr: { dash: screen === 'dash', house: screen === 'house', nw: screen === 'new', reqs: screen === 'reqs', docs: screen === 'docs', log: screen === 'log', roles: screen === 'roles' },
+      kpi: kpi, filters: segs(['Alle', 'Aandacht nodig', 'Vrije plek']),
+      houses: houses,
+      att: att, attCount: att.length === 1 ? '1 punt' : att.length + ' punten',
+      news: [
+        { cat: 'Beleid', when: this.fmt(now - 2 * DAY), title: 'Nieuwe versie van de meldcode', text: 'De bijgewerkte meldcode staat bij de documenten. Lees hem voor het volgende gezinshuisoverleg.' },
+        { cat: 'Scholing', when: this.fmt(now - 6 * DAY), title: 'Training traumasensitief werken', text: 'In januari voor alle gezinshuisouders. Aanmelden via de agenda.' },
+        { cat: 'Organisatie', when: this.fmt(now - 13 * DAY), title: 'Nieuwe zorgcoördinator Team Wonen', text: 'Vanaf december is er een vaste contactpersoon per regio.' }
+      ],
+      sharedTop: D.shared.slice(0, 4).map(docRow), shared: D.shared.map(docRow), goDocs: go('docs'),
+      H: H, pipe: pipe, reqs: D.reqs.map(reqRow),
+      logFilters: segs(['Alle huizen'].concat(D.houses.map((x) => x.name))),
+      logRows: D.log.map((l) => ({ when: this.ago(l.ts, now), who: l.who, ini: this.ini(l.who), text: l.text, house: hname(l.h) })),
+      users: D.users.map((u) => ({ name: u.name, ini: this.ini(u.name), mail: u.mail, role: RL[u.role], cls: RC[u.role], scope: u.scope })),
+      vis: VIS.map((v) => {
+        const vOn = !!D.vis.viewer[v[0]], aOn = !!D.vis.audit[v[0]];
+        return { label: v[1], desc: v[2], vOn: vOn, aOn: aOn, vCls: 'tg' + (vOn ? ' on' : ''), aCls: 'tg' + (aOn ? ' on' : ''), vText: vOn ? 'Zichtbaar' : 'Afgeschermd', aText: aOn ? 'Zichtbaar' : 'Afgeschermd', vAria: v[1] + ' voor viewer', aAria: v[1] + ' voor audit', soon: soon };
+      }),
+      toast: { show: !!st.toast, text: st.toast || '' }
+    };
+  }
+}
+
+const comp = new Component();
+const tplRoot = document.getElementById('tpl').content;
+const app = document.getElementById('app');
+const HOLE = /\{\{\s*([^}]+?)\s*\}\}/g;
+function look(path, scope) { const parts = path.split('.'); let v = scope[parts[0]]; for (let i = 1; i < parts.length && v != null; i++) v = v[parts[i]]; return v; }
+function interp(s, scope) { return s.replace(HOLE, (_, p) => { const v = look(p.trim(), scope); return v == null ? '' : String(v); }); }
+function whole(s, scope) { const m = s.match(/^\s*\{\{\s*([^}]+?)\s*\}\}\s*$/); return m ? { v: look(m[1].trim(), scope) } : null; }
+function build(node, scope, out) {
+  if (node.nodeType === 3) { out.appendChild(document.createTextNode(interp(node.textContent, scope))); return; }
+  if (node.nodeType !== 1) return;
+  const tag = node.tagName.toLowerCase();
+  if (tag === 'sc-for') {
+    const list = whole(node.getAttribute('list'), scope).v || []; const as = node.getAttribute('as');
+    list.forEach((item, i) => { const sc = Object.assign({}, scope, { [as]: item, $index: i }); node.childNodes.forEach((c) => build(c, sc, out)); });
+    return;
+  }
+  if (tag === 'sc-if') { if (whole(node.getAttribute('value'), scope).v) node.childNodes.forEach((c) => build(c, scope, out)); return; }
+  const el = document.createElementNS(node.namespaceURI, node.localName);
+  for (const a of node.attributes) {
+    if (a.name.startsWith('hint-')) continue;
+    if (/^on[a-z]+$/i.test(a.name)) { const w = whole(a.value, scope); if (w && typeof w.v === 'function') el.addEventListener(a.name.slice(2).toLowerCase(), w.v); continue; }
+    const val = interp(a.value, scope);
+    if (a.name === 'value' && 'value' in el) el.value = val; else el.setAttribute(a.name, val);
+  }
+  node.childNodes.forEach((c) => build(c, scope, el));
+  out.appendChild(el);
+}
+function render() { const vals = comp.renderVals(); const frag = document.createDocumentFragment(); tplRoot.childNodes.forEach((c) => build(c, vals, frag)); app.replaceChildren(frag); }
+render();
+</script>
+</body>
+</html>
