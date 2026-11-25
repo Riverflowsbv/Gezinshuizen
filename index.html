@@ -40,6 +40,8 @@ sc-for,sc-if{display:contents}
 .hero-in{position:relative;z-index:1}
 .topbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;margin-top:16px;padding:8px 12px 8px 14px;background:rgba(255,255,255,.95);border:1px solid #fff;border-radius:20px;box-shadow:0 1px 2px rgba(28,46,80,.06),0 14px 34px rgba(28,46,80,.12)}
 .brandbox{display:flex;align-items:center;gap:12px}
+.mbtn{display:none;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:0 14px;border:1px solid #D3DEEC;border-radius:12px;background:#F6F9FD;font-weight:700;color:#16202C;cursor:pointer}
+.mbtn[aria-expanded="true"]{background:#DCE9FB;border-color:#BCD3F3}
 .bname{font-size:16px;font-weight:800;letter-spacing:-.01em;line-height:1.2}
 .menu{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
 .navi{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:0;border-radius:12px;background:transparent;font-weight:600;color:#3A4658;cursor:pointer;white-space:nowrap;transition:background .16s,color .16s}
@@ -149,9 +151,10 @@ sc-for,sc-if{display:contents}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(33,102,214,.38)}70%{box-shadow:0 0 0 10px rgba(33,102,214,0)}100%{box-shadow:0 0 0 0 rgba(33,102,214,0)}}
 @media (max-width:900px){
 .topbar{padding:8px 10px}
-.menu{order:3;flex:1 1 100%;flex-wrap:nowrap;overflow-x:auto;margin:0 -4px;padding-bottom:2px;scrollbar-width:none}
-.menu::-webkit-scrollbar{display:none}
-.navi{flex:none}
+.mbtn{display:flex;order:3;flex:1 1 100%}
+.menu{display:none;order:4;flex:1 1 100%;flex-direction:column;align-items:stretch;gap:2px;padding-top:6px;border-top:1px solid #E7EDF4;animation:drop .2s ease-out both}
+.menu.open{display:flex}
+.navi{justify-content:space-between;width:100%}
 }
 @media (max-width:760px){
 .wrap{padding-left:16px;padding-right:16px}
@@ -227,7 +230,8 @@ sc-for,sc-if{display:contents}
 <img src="prototype/assets/bijelkaar-logo.png" alt="Logo van Bij Elkaar" style="width: 56px; height: 56px; object-fit: contain">
 <div class="col" style="gap: 1px"><div class="bname">Bij Elkaar</div><div class="mut">Gezinshuisportaal</div></div>
 </div>
-<nav aria-label="Hoofdmenu" class="menu">
+<button type="button" class="mbtn" aria-expanded="{{ menuOpen }}" aria-label="Menu" onClick="{{ toggleMenu }}"><span class="mlab">{{ curLabel }}</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="{{ menuIcon }}"></path></svg></button>
+<nav aria-label="Hoofdmenu" class="{{ menuCls }}">
 <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6">
 <button type="button" class="{{ n.cls }}" onClick="{{ n.go }}"><span>{{ n.label }}</span><sc-if value="{{ n.hasBadge }}" hint-placeholder-val="{{ false }}"><span class="badge">{{ n.badge }}</span></sc-if></button>
 </sc-for>
@@ -692,8 +696,8 @@ class Component extends DCLogic {
     const SCREENS = ['dash', 'house', 'new', 'reqs', 'docs', 'log', 'roles'];
     const screen = SCREENS.indexOf(st.screen) >= 0 ? st.screen : 'dash';
     const chip = (s) => 'chip st c-' + s;
-    const go = (s) => () => this.set({ screen: s, toast: '' });
-    const openHouse = (id, tab) => () => this.set({ screen: 'house', houseId: id, tab: tab || 'ov', toast: '' });
+    const go = (s) => () => this.set({ screen: s, toast: '', menuOpen: false });
+    const openHouse = (id, tab) => () => this.set({ screen: 'house', houseId: id, tab: tab || 'ov', toast: '', menuOpen: false });
     const soon = () => {
       clearTimeout(this._t);
       this._t = setTimeout(() => { this.set({ toast: '' }); }, 3400);
@@ -728,7 +732,7 @@ class Component extends DCLogic {
     const NAV = [['dash', 'Overzicht'], ['new', 'Nieuwe huizen'], ['reqs', 'Aanvragen'], ['docs', 'Documenten'], ['log', 'Logboek'], ['roles', 'Rollen']];
     const nav = NAV.map((it) => {
       const on = screen === it[0] || (it[0] === 'dash' && screen === 'house');
-      return { label: it[1], cls: 'navi' + (on ? ' on' : ''), go: go(it[0]), hasBadge: it[0] === 'reqs' && openReqs > 0, badge: String(openReqs) };
+      return { label: it[1], on: on, cls: 'navi' + (on ? ' on' : ''), go: () => this.set({ screen: it[0], toast: '', menuOpen: false }), hasBadge: it[0] === 'reqs' && openReqs > 0, badge: String(openReqs) };
     });
     const houses = rows.map((r, i) => ({
       name: r.x.name, ini: this.ini(r.x.name), regio: r.x.regio, delay: (i * 40) + 'ms',
@@ -829,6 +833,9 @@ class Component extends DCLogic {
 
     return {
       soon: soon,
+      menuOpen: !!st.menuOpen, menuCls: 'menu' + (st.menuOpen ? ' open' : ''), toggleMenu: () => this.set({ menuOpen: !st.menuOpen }),
+      menuIcon: st.menuOpen ? 'M6 6l12 12M18 6 6 18' : 'M4 7h16M4 12h16M4 17h16',
+      curLabel: (nav.find((n) => n.on) || nav[0]).label,
       nav: nav, hero: hero,
       scr: { dash: screen === 'dash', house: screen === 'house', nw: screen === 'new', reqs: screen === 'reqs', docs: screen === 'docs', log: screen === 'log', roles: screen === 'roles' },
       kpi: kpi, filters: segs(['Alle', 'Aandacht nodig', 'Vrije plek']),
