@@ -147,6 +147,58 @@ sc-for,sc-if{display:contents}
 @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes ringin{from{opacity:0;transform:rotate(-120deg) scale(.7)}to{opacity:1;transform:none}}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(33,102,214,.38)}70%{box-shadow:0 0 0 10px rgba(33,102,214,0)}100%{box-shadow:0 0 0 0 rgba(33,102,214,0)}}
+@media (max-width:900px){
+.topbar{padding:8px 10px}
+.menu{order:3;flex:1 1 100%;flex-wrap:nowrap;overflow-x:auto;margin:0 -4px;padding-bottom:2px;scrollbar-width:none}
+.menu::-webkit-scrollbar{display:none}
+.navi{flex:none}
+}
+@media (max-width:760px){
+.wrap{padding-left:16px;padding-right:16px}
+.strip-in>.ptxt{display:none}
+.ptxt{font-size:12px}
+.topbar{margin-top:10px;border-radius:16px}
+.brandbox img{width:44px!important;height:44px!important}
+.userchip{padding:4px}
+.userchip .col{display:none}
+.h1{font-size:28px}
+.hsub{font-size:14.5px}
+.hh{padding:22px 2px 112px;align-items:flex-start}
+.hh .btn{width:100%}
+.main{margin-top:-80px;padding-bottom:32px}
+.screen{gap:14px}
+.card{border-radius:14px}
+.ch,.pad,.kpi{padding:14px 16px}
+.row{padding:12px 16px;gap:8px}
+.num{font-size:28px}
+.kpi{gap:12px}
+.kico{width:40px;height:40px}
+.card div[style*="min-width"]{min-width:0!important}
+.row.head{display:none!important}
+.card[style*="flex-wrap"] .lbl{flex:1 1 100%}
+.screen>div[style*="minmax(min(220px"] .num{font-size:24px!important}
+.g-h,.g-vog,.g-req,.g-log,.g-user,.g-vis,.row[style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}
+.row .act{justify-content:flex-start}
+.row div[style*="justify-self"]{justify-self:start!important}
+.g3{grid-template-columns:minmax(0,1fr) auto}
+.g3 .chip{display:none}
+.tdot{display:none!important}
+.srch,.srch .inp{width:100%}
+.ch>div{width:100%}
+.tabs{align-self:stretch}
+.tab{padding:0 12px}
+.card[style*="flex-wrap"] .btn{flex:1 1 auto}
+.screen>div[style*="minmax(min(220px"]{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+.kpi{flex-direction:column;gap:8px}
+.screen>div[style*="minmax(min(220px"]>.card{padding:14px!important}
+.g-h{display:flex!important;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.g-h>div:first-child{flex:1 1 100%}
+.g-h>div:nth-child(5){flex:1 1 auto;color:#55647A;font-size:12.5px}
+.g-h>div:nth-child(5)::before{content:"Huisbezoek "}
+.g-h>div:last-child{flex:1 1 100%}
+.g-h>div:last-child .btn{width:100%}
+.foot{height:110px}
+}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
